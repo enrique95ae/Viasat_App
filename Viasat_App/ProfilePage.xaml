@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Viasat_App.ProfilePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true"
+             Title="Profile"
+             >
+    
+    <ContentPage.Content>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+        
+        <BoxView 
+            HorizontalOptions="FillAndExpand" 
+            Grid.Row="0" 
+            VerticalOptions="Start" 
+            Color="Blue"
+            />
+            
+            <StackLayout Grid.Row="1" >
+                <Image 
+                    Source="photos/proPic.jpg"  
+                    HorizontalOptions="Start"
+                    VerticalOptions="FillAndExpand" 
+                    WidthRequest="100" 
+                    HeightRequest="100"
+                    />
+            </StackLayout>
+        </Grid>
+     
+    </ContentPage.Content>
+    
+</ContentPage>
