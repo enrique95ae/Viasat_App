@@ -2,20 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Viasat_App.SearchPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true"
-             Title="Search"
-             >
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true">
     
     <ContentPage.Content>
         
-    <StackLayout HorizontalOptions="Center">
-        
-        <Button HorizontalOptions="Center" VerticalOptions="Center"
-                x:Name="searchButton"
-                Text="To ResultsPage"
-                Clicked="resultsButton_Clicked"
+        <StackLayout>
+        <Label 
+            HorizontalOptions="Start" 
+            VerticalOptions="Center"
+            Text="Search For"
+            />
+        <Entry
+            x:Name="searchEntry"
+            Placeholder="search"
+            />
+        <Button 
+            HorizontalOptions="Center" 
+            VerticalOptions="Center"
+            x:Name="searchButton"
+            Text="Search"
+            Clicked="resultsButton_Clicked"
+            />
+        <ListView x:Name = "ParameterListView" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3.5*"/>
+                                <ColumnDefinition Width="6.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Picker
+                                    Grid.Row="0"
+                                    TextColor="Blue"
+                                    Title="{Binding ParameterSelection}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding PickerItems}"
+                                    />
+                                <Entry
+                                    Grid.Column="1"
+                                    x:Name="ParameterEntry"
+                                    Placeholder="Userparameter"
+                                />
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <Image
+                x:Name="logoImage"
+                Source="http://www.arconics.com/wp-content/uploads/sites/7/2017/12/Viasat-new-logo-nov-17.png"
+                HeightRequest="100"
+                WidthRequest="320"
                 />
-        
+            <BoxView
+                BackgroundColor="White"
+                MinimumWidthRequest="500"
+                MinimumHeightRequest="400"
+                />
+            
                 
     </StackLayout>
     </ContentPage.Content>

@@ -2,38 +2,77 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Viasat_App.ProfilePage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true"
-             Title="Profile"
-             >
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
     
-    <ContentPage.Content>
-        <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition Height="AUTO"/>
-            <RowDefinition Height="AUTO"/>
-        </Grid.RowDefinitions>
-        
         <BoxView 
-            HorizontalOptions="FillAndExpand" 
-            Grid.Row="0" 
+            HorizontalOptions="FillAndExpand"  
             VerticalOptions="Start" 
             Color="Blue"
+        />
+        
+        <Label 
+            TextColor="Black" 
+            FontSize="20"  
+            Text="Profile Page" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Start"
+        />
+        
+        <StackLayout  Padding="15">
+            <Image 
+                Source="photos/proPic.jpg"  
+                HorizontalOptions="Start"
+                VerticalOptions="FillAndExpand" 
+                WidthRequest="100" 
+                HeightRequest="100"
             />
-            
-            <StackLayout Grid.Row="1" >
-                <Image 
-                    Source="photos/proPic.jpg"  
-                    HorizontalOptions="Start"
-                    VerticalOptions="FillAndExpand" 
-                    WidthRequest="100" 
-                    HeightRequest="100"
-                    />
-            </StackLayout>
-        </Grid>
-     
-    </ContentPage.Content>
-    
+        
+            <Label 
+                x:Name="ProfileInfoLabel" 
+                FontSize="14" 
+                TextColor="Black" 
+                Text= "Name: John Smith Email: jSmith@email.com ID: 00000000 number: 123456789"
+            />  
+        </StackLayout>
+
+        <StackLayout BackgroundColor = "Green">
+            <Label 
+                x:Name="ContactsLabel"
+                FontSize="14" 
+                TextColor="Black" 
+                Text="Contacts"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+            />
+
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Steve Smith (951)976-1234</x:String>
+                        <x:String>Debbie Laura (321)123-4312</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+        </StackLayout>
+ 
+        <StackLayout>
+             <Label 
+                x:Name="NotesLabel" 
+                FontSize="14" 
+                TextColor="Black" 
+                BackgroundColor ="blue"
+                HeightRequest = "100"
+                Text="Notes"
+                />
+       
+             <ListView>
+                 <ListView.ItemsSource>
+                     <x:Array Type="{x:Type x:String}">
+                          <x:String>Check out part #412358</x:String>
+                          <x:String>Address of manufacture 321 E Main St</x:String>
+                     </x:Array>
+                 </ListView.ItemsSource>
+             </ListView>
+        </StackLayout>
+
 </ContentPage>
