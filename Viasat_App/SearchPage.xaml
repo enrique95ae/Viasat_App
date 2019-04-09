@@ -29,26 +29,26 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <Grid>
+                            <Grid Padding="5">
                                 <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3.5*"/>
-                                <ColumnDefinition Width="6.5*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Picker
                                     Grid.Row="0"
+                                    Grid.Column="0"
                                     TextColor="Blue"
-                                    Title="{Binding ParameterSelection}"
-                                    ItemDisplayBinding="{Binding Name}"
-                                    ItemsSource="{Binding PickerItems}"
+                                    ItemsSource="{Binding parametersList}"
                                     />
                                 <Entry
                                     Grid.Column="1"
+                                    Grid.Row="0"
                                     x:Name="ParameterEntry"
                                     Placeholder="Userparameter"
+                                    TextColor="Blue"
                                 />
                             </Grid>
                         </ViewCell.View>

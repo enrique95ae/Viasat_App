@@ -10,32 +10,19 @@ namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
     {
-        //public ObservableCollection<Parameter> ParameterList { get; set; }
-        //public ObservableCollection<Picker> PickList { get; set; }
+
+        public List<string> parametersList;
+
         public SearchPage()
         {
             InitializeComponent();
             //PopulateList();
-            //List<ParameterModel> models = new List<ParameterModel>();
-            List<Parameter> selection = new List<Parameter>();
 
-            for (int i = 0; i < 3; i++)
-            {
-                selection.Add(new Parameter
-                {
-                    ParameterSelection = "Pick a Parameter",
-                    PickerItems = new List<Parameter.PickerItem>
-                        {
-                         new Parameter.PickerItem {Name="Part I.D. #"},
-                         new Parameter.PickerItem {Name="Description"},
-                         new Parameter.PickerItem {Name="Application"},
-                         new Parameter.PickerItem {Name="Level #"},
-                         new Parameter.PickerItem {Name="Item"},
-                         new Parameter.PickerItem {Name="Components"}
-                        }
-                });
-            }
-            ParameterListView.ItemsSource = selection;
+            parametersList = new List<string>();
+
+            parametersList.Add("Part I.D. #");
+            parametersList.Add("Description");
+
         }
         //Populate the list
 
