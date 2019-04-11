@@ -18,6 +18,8 @@ namespace Viasat_App
         //public ItemJson itemDeserilized;
 
         public List<string> parametersList;
+        string tempCompID;
+        char tempChar;
 
         public SearchPage()
         {
@@ -31,17 +33,16 @@ namespace Viasat_App
 
         }
 
-
         //START: BUTTONS EVENTS #######################################################
 
         //PURPOSE: upon user click the app sends a request to the API and waits for a response and handles the incoming data accordingly:
         //PARAMETERS: navigation params
         //ALGORITHM:
         //  -Button is clicked
-        //  -API endpoint is created in a string according to the search parameters
+        //  -API endpoint is created in a string according to the search parameters <-----  NOT YET
         //  -HTTP client is created
         //  -App waits for a response in a JSON format
-        //  -Response is checked for errors. If success data is parsed into an object of type: ItemData
+        //  -Response is checked for errors. If success data is parsed into an object of type: ItemData   <----- NOT YET
         private async void resultsButton_Clicked(object sender, EventArgs e)
         {
             /*
@@ -61,29 +62,27 @@ namespace Viasat_App
             //response stream into a string
             string jsonContent = await response.Content.ReadAsStringAsync();
 
-            //var itemsList = JsonConvert.DeserializeObject<List<ItemJson>>(jsonContent);
-            //var itemJson = ItemJson.FromJson(jsonContent);
+            //parsing from json string to a list of objects of our item model type
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
 
-            //for(int i=0; i<itemsList.Count(); i++)
+            //from list of chars to list of ids(strings)
+            //for (int i=0; i<itemsList.Count; i++)
             //{
-            //    Console.WriteLine("The number of elements in the json is: " + itemsList.Count());
-            //    Console.WriteLine("Item number: " + itemsList[i].item_number);
-            //    Console.WriteLine("Description: " + itemsList[i].description);
-            //    Console.WriteLine("Part type: " + itemsList[i].part_type);
-            //    Console.WriteLine("Permission lvl: " + itemsList[i].permission_level);
-            //    Console.WriteLine("Revison: " + itemsList[i].revision);
-
-            //    for(int j=0; j<itemsList[i].components.Count(); j++)
+            //    for (int j =0; j<itemsList[i].components.Length; j++)
             //    {
-            //        Console.WriteLine("Component #" + j + ": " + itemsList[i].components[j]);
+            //        tempChar = itemsList[i].components[j];
+            //        if (tempChar != ',' && tempChar != '[' && tempChar != ']')
+            //        {
+            //            tempCompID += tempChar;
+            //        }
             //    }
+            //    itemsList[i].componentsIDs.Add(tempCompID);
+            //    tempCompID = "";
             //}
 
-
+            //open the results page and pass the list of items to populate it
             await Navigation.PushAsync(new ResultsPage(itemsList));
         }
         //END: BUTTONS EVENTS #######################################################
     }
-}
-
+};

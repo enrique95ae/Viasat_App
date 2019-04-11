@@ -140,7 +140,7 @@
                                                     />
                                                 
                                                 <Span
-                                                    Text="1234567, 23453676, 75435236"
+                                                    Text=""
                                                     />
                                                 </FormattedString>
                                             </Label.FormattedText>

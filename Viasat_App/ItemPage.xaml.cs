@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ItemType;
 
 using Xamarin.Forms;
 
@@ -7,10 +8,10 @@ namespace Viasat_App
 {
     public partial class ItemPage : ContentPage
     {
-        public ItemPage(/*ItemModel itemReceived*/)
+        public ItemPage(ItemModel itemReceived)
         {
             InitializeComponent();
-           //populatePage(itemReceived);
+            populatePage(itemReceived);
         }
 
         //START: BUTTONS EVENTS #######################################################
@@ -34,14 +35,14 @@ namespace Viasat_App
 
 
         //populating the GUI with the received item's data.
-        //private void populatePage(ItemModel itemReceived)
-        //{
-        //    itemTitleLabel.Text = itemReceived.ItemNumber;
-        //    itemNumberLabel.Text = itemReceived.ItemNumber;
-        //    itemDescriptionLabel.Text = itemReceived.ItemDescription;
-        //    itemRevisionLabel.Text = itemReceived.ItemRevision.ToString();
-        //    itemPartTypeLabel.Text = itemReceived.ItemPartType;
-        //}
+        private void populatePage(ItemModel itemReceived)
+        {
+            itemTitleLabel.Text = itemReceived.item_number.ToString();
+            itemNumberLabel.Text = itemReceived.item_number.ToString();
+            itemDescriptionLabel.Text = itemReceived.description;
+            itemRevisionLabel.Text = itemReceived.revision.ToString();
+            itemPartTypeLabel.Text = itemReceived.part_type;
+        }
 
     }
 }

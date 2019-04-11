@@ -24,6 +24,8 @@ namespace ItemType
 
         [JsonProperty("revision")]
         public int revision { get; set; }
+
+        public List<string> componentsIDs { get; set; }
     }
 
 }

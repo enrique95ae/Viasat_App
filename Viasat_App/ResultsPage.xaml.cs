@@ -9,11 +9,6 @@ namespace Viasat_App
 {
     public partial class ResultsPage : ContentPage
     {
-
-        //public ObservableCollection<ItemModel> ItemList { get; set; }
-        //public ItemModel itemToSend;
-
-
         public ResultsPage(List<ItemModel> itemList)
         {
             InitializeComponent();
@@ -25,11 +20,11 @@ namespace Viasat_App
         private async void itemEntry_Tapped(object sender, ItemTappedEventArgs e)
         {
             //Creating an object of type ItemModel 
-            //ItemModel item = (ItemModel)((ListView)sender).SelectedItem;
+            ItemModel item = (ItemModel)((ListView)sender).SelectedItem;
             ((ListView)sender).SelectedItem = null;
 
             //calling the ItemPage into the stack and passing the selected item by the user
-            await Navigation.PushAsync(new ItemPage(/*item*/));
+            await Navigation.PushAsync(new ItemPage(item));
         }
 
         //END: BUTTONS EVENTS #########################################################

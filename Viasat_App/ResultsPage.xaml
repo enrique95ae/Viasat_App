@@ -27,14 +27,27 @@
                                         </Grid.RowDefinitions>
                                 
                                         <Label
-                                            x:Name="itemNumberLabel"
+                                            x:Name="#"
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            HorizontalOptions="Start"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            TextColor="#009FE3"
+                                            Text="#"
+                                            Margin="3"
+                                            FontAttributes="Bold"
+                                            />
+                                    
+                                        <Label
+                                            x:Name="itemNumberLabel"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            HorizontalOptions="Center"
                                             VerticalOptions="Center"
                                             TextColor="#009FE3"
                                             Text="{Binding item_number}"
                                             Margin="3"
+                                            FontAttributes="Bold"
                                             />
                                     
                                         <Label
