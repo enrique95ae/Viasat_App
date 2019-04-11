@@ -7,13 +7,15 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
-using ItemData;
+//using ItemData;
+using ItemType;
 
 namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
     {
-        public ObservableCollection<ItemJson> itemsList = new ObservableCollection<ItemJson>();
+        //public List<ItemJson> itemsList = new List<ItemJson>();
+        //public ItemJson itemDeserilized;
 
         public List<string> parametersList;
 
@@ -28,6 +30,7 @@ namespace Viasat_App
             parametersList.Add("Description");
 
         }
+
 
         //START: BUTTONS EVENTS #######################################################
 
@@ -48,7 +51,7 @@ namespace Viasat_App
              */
 
             //setting up endpoint
-            string endpointSt = "http://enriqueae.com/ViasatTest/itemsJson.json";
+            string endpointSt = "http://enriqueae.com/ViasatTest/json2.json";
             Uri apiUri = new Uri(endpointSt);
 
             //creating a http client to handle the async data retreival
@@ -58,14 +61,29 @@ namespace Viasat_App
             //response stream into a string
             string jsonContent = await response.Content.ReadAsStringAsync();
 
-            itemsList = JsonConvert.DeserializeObject<ObservableCollection<ItemJson>>(jsonContent);
+            //var itemsList = JsonConvert.DeserializeObject<List<ItemJson>>(jsonContent);
+            //var itemJson = ItemJson.FromJson(jsonContent);
+            var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
 
-            await Navigation.PushAsync(new ResultsPage());
+            //for(int i=0; i<itemsList.Count(); i++)
+            //{
+            //    Console.WriteLine("The number of elements in the json is: " + itemsList.Count());
+            //    Console.WriteLine("Item number: " + itemsList[i].item_number);
+            //    Console.WriteLine("Description: " + itemsList[i].description);
+            //    Console.WriteLine("Part type: " + itemsList[i].part_type);
+            //    Console.WriteLine("Permission lvl: " + itemsList[i].permission_level);
+            //    Console.WriteLine("Revison: " + itemsList[i].revision);
+
+            //    for(int j=0; j<itemsList[i].components.Count(); j++)
+            //    {
+            //        Console.WriteLine("Component #" + j + ": " + itemsList[i].components[j]);
+            //    }
+            //}
+
+
+            await Navigation.PushAsync(new ResultsPage(itemsList));
         }
-
-
         //END: BUTTONS EVENTS #######################################################
     }
 }
-
 

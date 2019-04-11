@@ -33,7 +33,7 @@
                                             HorizontalOptions="Start"
                                             VerticalOptions="Center"
                                             TextColor="#009FE3"
-                                            Text="{Binding ItemNumber}"
+                                            Text="{Binding item_number}"
                                             Margin="3"
                                             />
                                     
@@ -43,18 +43,18 @@
                                             Grid.Column="1"
                                             HorizontalOptions="StartAndExpand"
                                             VerticalOptions="Center"
-                                            Text="{Binding ItemDescription}"
+                                            Text="{Binding description}"
                                             />
                                     
                                         <Label
-                                            x:Name="itemSerialLabel"
+                                            x:Name="itemPartType"
                                             Grid.Row="1"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             HorizontalOptions="CenterAndExpand"
                                             VerticalOptions="Center"
                                             FontAttributes="Bold"
-                                            Text="{Binding ItemNumber}"
+                                            Text="{Binding part_type}"
                                             />
                                     </Grid>
                                 </ViewCell.View>

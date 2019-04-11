@@ -1,14 +1,29 @@
-﻿using Xamarin.Forms;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace Viasat_App
+namespace ItemType
 {
+
     public class ItemModel
     {
-        public string ItemNumber { get; set; }
-        public string ItemDescription { get; set; }
-        public int ItemRevision { get; set; }
-        public string ItemPartType { get; set; }
-        public int[] ItemComponentsIds { get; set; }
-        public int[] ItemCommentsIds { get; set; }
+
+        [JsonProperty("item_number")]
+        public int item_number { get; set; }
+
+        [JsonProperty("description")]
+        public string description { get; set; }
+
+        [JsonProperty("part_type")]
+        public string part_type { get; set; }
+
+        [JsonProperty("permission_level")]
+        public int permission_level { get; set; }
+
+        [JsonProperty("components")]
+        public string components { get; set; }
+
+        [JsonProperty("revision")]
+        public int revision { get; set; }
     }
+
 }
