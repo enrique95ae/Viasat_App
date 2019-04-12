@@ -14,7 +14,6 @@ namespace Viasat_App
             InitializeComponent();
             item = itemReceived;
             populatePage(itemReceived);
-
         }
 
         public ItemModel item;
@@ -25,7 +24,12 @@ namespace Viasat_App
 
         private async void componentsButton_Clicked(object sender, EventArgs e)
         {
-            components_id_List = item.components.Split(',').ToList();
+            //removing unnecessary characters
+            temp = item.components;
+            temp = temp.Replace("[", "");
+            temp = temp.Replace("]", "");
+            components_id_List = temp.Split(',').ToList();
+
             await Navigation.PushAsync(new ComponentsPage(components_id_List));
         }
 

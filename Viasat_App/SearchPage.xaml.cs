@@ -14,9 +14,6 @@ namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
     {
-        //public List<ItemJson> itemsList = new List<ItemJson>();
-        //public ItemJson itemDeserilized;
-
         public List<string> parametersList;
 
         public SearchPage()

@@ -8,34 +8,67 @@
              Title="Home"
              >
     
-    <StackLayout>
-
+    <StackLayout Padding="5">
+        <Grid Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            
         <Button HorizontalOptions="Center" VerticalOptions="Center"
                 x:Name="searchButton"
                 Text="Search"
                 Clicked="searchButton_Clicked"
+                BackgroundColor="#BED733"
+                TextColor="White"
+                FontAttributes="Bold"
+                Grid.Row="0"
+                Grid.Column="0"
+                WidthRequest="100"
+                HeightRequest="100"
                 />
         
         <Button HorizontalOptions="Center" VerticalOptions="Center"
                 x:Name="profileButton"
                 Text="Profile"
                 Clicked="profileButton_Clicked"
+                BackgroundColor="#009FE3"
+                TextColor="White"
+                FontAttributes="Bold"
+                Grid.Row="0"
+                Grid.Column="1"
+                WidthRequest="100"
+                HeightRequest="100"
                 />
         
         <Button HorizontalOptions="Center" VerticalOptions="Center"
                 x:Name="historyButton"
                 Text="History"
+                BackgroundColor="#BED733"
+                TextColor="White"
+                FontAttributes="Bold"
+                Grid.Row="1"
+                Grid.Column="0"
+                WidthRequest="100"
+                HeightRequest="100"
                 />
         
         <Button HorizontalOptions="Center" VerticalOptions="Center"
                 x:Name="favouritesButton"
                 Text="Favourites"
+                BackgroundColor="#009FE3"
+                TextColor="White"
+                FontAttributes="Bold"
+                Grid.Row="1"
+                Grid.Column="1"
+                WidthRequest="100"
+                HeightRequest="100"
                 />
-        
-        <Button HorizontalOptions="Center" VerticalOptions="Center"
-                x:Name="commentsButton"
-                Text="Comments"
-                />
-                
+
+            </Grid>
     </StackLayout>
 </ContentPage>
