@@ -7,25 +7,16 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
-//using ItemData;
 using ItemType;
 
 namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
     {
-        public List<string> parametersList;
 
         public SearchPage()
         {
             InitializeComponent();
-            //PopulateList();
-
-            parametersList = new List<string>();
-
-            parametersList.Add("Part I.D. #");
-            parametersList.Add("Description");
-
         }
 
         //START: BUTTONS EVENTS #######################################################
