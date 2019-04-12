@@ -19,7 +19,8 @@
                 <Label 
                     x:Name="itemTitleLabel"
                     HorizontalOptions="Center"
-                    Text="{Binding ItemNumber}"
+                    VerticalOptions="Center"
+                    Text="{Binding id}"
                     Grid.Row="0"
                     FontSize="Large"
                     TextColor="#202E39"
@@ -139,8 +140,8 @@
                                                     Text="  "
                                                     />
                                                 
-                                                <Span
-                                                    Text=""
+                                                <Span x:Name="itemComponentsLabel"
+                                                    Text="{Binding Components}"
                                                     />
                                                 </FormattedString>
                                             </Label.FormattedText>

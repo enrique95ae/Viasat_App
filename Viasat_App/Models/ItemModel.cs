@@ -6,6 +6,8 @@ namespace ItemType
 
     public class ItemModel
     {
+        [JsonProperty("_id")]
+        public string id { get; set; }
 
         [JsonProperty("item_number")]
         public int item_number { get; set; }

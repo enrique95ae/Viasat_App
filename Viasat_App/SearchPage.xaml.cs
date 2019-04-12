@@ -68,12 +68,17 @@ namespace Viasat_App
             //from list of chars to list of ids(strings)
             //for (int i=0; i<itemsList.Count; i++)
             //{
-            //    for (int j =0; j<itemsList[i].components.Length; j++)
+            //    if (itemsList[i].components != null)
             //    {
-            //        tempChar = itemsList[i].components[j];
-            //        if (tempChar != ',' && tempChar != '[' && tempChar != ']')
+            //        for (int j = 0; j < itemsList[i].components.Length; j++)
             //        {
-            //            tempCompID += tempChar;
+
+            //            tempChar = itemsList[i].components[j];
+            //            if (tempChar != ',' && tempChar != '[' && tempChar != ']')
+            //            {
+            //                tempCompID += tempChar;
+            //            }
+
             //        }
             //    }
             //    itemsList[i].componentsIDs.Add(tempCompID);

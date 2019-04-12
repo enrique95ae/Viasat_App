@@ -37,11 +37,14 @@ namespace Viasat_App
         //populating the GUI with the received item's data.
         private void populatePage(ItemModel itemReceived)
         {
-            itemTitleLabel.Text = itemReceived.item_number.ToString();
+            itemTitleLabel.Text = itemReceived.id;
             itemNumberLabel.Text = itemReceived.item_number.ToString();
             itemDescriptionLabel.Text = itemReceived.description;
             itemRevisionLabel.Text = itemReceived.revision.ToString();
             itemPartTypeLabel.Text = itemReceived.part_type;
+            itemComponentsLabel.Text = itemReceived.components;
+
+
         }
 
     }
