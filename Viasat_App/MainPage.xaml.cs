@@ -26,7 +26,17 @@ namespace Viasat_App
         {
             await Navigation.PushAsync(new ProfilePage());
         }
+ 
+       /* private async void favoritesButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
 
+        private async void historyButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+        */
 
         //END: BUTTONS EVENTS ##########################################################
 

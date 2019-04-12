@@ -3,28 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Viasat_App.SearchPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-    ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="White">
     
-    <ContentPage.Content>
+    <ContentPage.Content >
         
         <StackLayout>
         <Label 
             HorizontalOptions="Start" 
             VerticalOptions="Center"
-            Text="Search For"
+            Text="Search For:"   
+            TextColor="#202E39"
+            FontSize="14"
+            FontAttributes="Bold"
             />
         <Entry
             x:Name="searchEntry"
-            Placeholder="search"
+            Placeholder="Search"
+            BackgroundColor="White"
             />
         <Button 
-            HorizontalOptions="Center" 
+            HorizontalOptions="CenterAndExpand" 
             VerticalOptions="Center"
             x:Name="searchButton"
             Text="Search"
+            FontAttributes="Bold"
+            FontSize="25"
+            TextColor="white"
+            BackgroundColor="#BED733"
+            WidthRequest="300"
+            HeightRequest="60"
             Clicked="resultsButton_Clicked"
             />
-        <ListView x:Name = "ParameterListView" >
+
+            <BoxView
+                BackgroundColor="white"
+                MinimumWidthRequest="500"
+                MinimumHeightRequest="10"
+            ></BoxView>
+            <ListView x:Name = "ParameterListView" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -35,20 +52,38 @@
                                 <ColumnDefinition Width="6.5*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                </Grid.RowDefinitions>
-                                <Picker
-                                    Grid.Row="0"
+                                    <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        HorizontalOptions="Start" 
+                                        VerticalOptions="Center"
+                                        Text="Search by:"
+                                        TextColor="#202E39"
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        />
+
+                                    <Picker
+                                    Grid.Row="1"
+                                    Grid.Column="0"
                                     TextColor="Blue"
+                                       
                                     Title="{Binding ParameterSelection}"
                                     ItemDisplayBinding="{Binding Name}"
                                     ItemsSource="{Binding PickerItems}"
+                                    
                                     />
                                 <Entry
                                     Grid.Column="1"
+                                    Grid.Row="1"
                                     x:Name="ParameterEntry"
                                     Placeholder="Userparameter"
+                                    PlaceholderColor="black"
+                                    TextColor="Blue"
+                                   
+                                    
                                 />
                             </Grid>
                         </ViewCell.View>
@@ -56,12 +91,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <Image
-                x:Name="logoImage"
-                Source="http://www.arconics.com/wp-content/uploads/sites/7/2017/12/Viasat-new-logo-nov-17.png"
-                HeightRequest="100"
-                WidthRequest="320"
-                />
+           
             <BoxView
                 BackgroundColor="White"
                 MinimumWidthRequest="500"

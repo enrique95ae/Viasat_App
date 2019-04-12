@@ -73,6 +73,18 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+            <Button
+                x:Name="AddCommentButton"
+                Text="Add Comment"
+                FontSize="30"
+                FontAttributes="None"
+                TextColor="White"
+                BackgroundColor="#BED733"
+                WidthRequest="200"
+                HeightRequest="67"
+                
+                ></Button>
             </StackLayout>
         
     </ContentPage.Content>

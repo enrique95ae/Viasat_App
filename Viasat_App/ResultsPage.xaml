@@ -6,6 +6,7 @@
     ios:Page.UseSafeArea="true"
              Title="Search results"
              >
+   
     
     <ContentPage.Content>
         
@@ -38,24 +39,26 @@
                                             />
                                     
                                         <Label
-                                            x:Name="itemDescriptionLabel"
+                                            x:Name="itemPartTypeLabel"
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="StartAndExpand"
                                             VerticalOptions="Center"
-                                            Text="{Binding ItemDescription}"
+                                            Text="{Binding ItemPartType}"
+                                            TextColor="#202E39"
                                             />
                                     
                                         <Label
-                                            x:Name="itemSerialLabel"
+                                            x:Name="itemDescriptionLabel"
                                             Grid.Row="1"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             HorizontalOptions="CenterAndExpand"
                                             VerticalOptions="Center"
                                             FontAttributes="Bold"
-                                            Text="{Binding ItemNumber}"
+                                            Text="{Binding ItemDescription}"
                                             />
+                                   
                                     </Grid>
                                 </ViewCell.View>
                             

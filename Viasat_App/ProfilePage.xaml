@@ -3,76 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Viasat_App.ProfilePage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
+
+    <StackLayout BackgroundColor ="White">
+        <Grid BackgroundColor ="Black" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView
+                BackgroundColor="Aqua"
+                Grid.Row="0"
+                Grid.Column="0"
+        
+            ></BoxView>
+
+            <BoxView
+                BackgroundColor="Pink"
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan ="2"
+
+
+            ></BoxView>
+
+
+        </Grid>
+
+
+    </StackLayout>
     
-        <BoxView 
-            HorizontalOptions="FillAndExpand"  
-            VerticalOptions="Start" 
-            Color="Blue"
-        />
-        
-        <Label 
-            TextColor="Black" 
-            FontSize="20"  
-            Text="Profile Page" 
-            VerticalOptions="Center" 
-            HorizontalOptions="Start"
-        />
-        
-        <StackLayout  Padding="15">
-            <Image 
-                Source="photos/proPic.jpg"  
-                HorizontalOptions="Start"
-                VerticalOptions="FillAndExpand" 
-                WidthRequest="100" 
-                HeightRequest="100"
-            />
-        
-            <Label 
-                x:Name="ProfileInfoLabel" 
-                FontSize="14" 
-                TextColor="Black" 
-                Text= "Name: John Smith Email: jSmith@email.com ID: 00000000 number: 123456789"
-            />  
-        </StackLayout>
-
-        <StackLayout BackgroundColor = "Green">
-            <Label 
-                x:Name="ContactsLabel"
-                FontSize="14" 
-                TextColor="Black" 
-                Text="Contacts"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"
-            />
-
-            <ListView>
-                <ListView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Steve Smith (951)976-1234</x:String>
-                        <x:String>Debbie Laura (321)123-4312</x:String>
-                    </x:Array>
-                </ListView.ItemsSource>
-            </ListView>
-        </StackLayout>
- 
-        <StackLayout>
-             <Label 
-                x:Name="NotesLabel" 
-                FontSize="14" 
-                TextColor="Black" 
-                BackgroundColor ="blue"
-                HeightRequest = "100"
-                Text="Notes"
-                />
-       
-             <ListView>
-                 <ListView.ItemsSource>
-                     <x:Array Type="{x:Type x:String}">
-                          <x:String>Check out part #412358</x:String>
-                          <x:String>Address of manufacture 321 E Main St</x:String>
-                     </x:Array>
-                 </ListView.ItemsSource>
-             </ListView>
-        </StackLayout>
-
+    
 </ContentPage>
+        
+    

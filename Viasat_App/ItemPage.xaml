@@ -20,9 +20,10 @@
                     x:Name="itemTitleLabel"
                     HorizontalOptions="Center"
                     Text="{Binding ItemNumber}"
+                    TextColor="#202E39"
                     Grid.Row="0"
                     FontSize="Large"
-                    TextColor="#202E39"
+                    
                     />
                 
                 <TableView HasUnevenRows="true" Grid.Row="1" Margin="2">
@@ -166,8 +167,9 @@
                             Grid.Column="0"
                             BackgroundColor="#BED733"
                             TextColor="White"
-                            FontSize="Large"
+                            FontSize="15.5"
                             FontAttributes="Bold"
+                           
                             />
                         
                         <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
@@ -177,7 +179,7 @@
                             Grid.Column="1"
                             BackgroundColor="#BED733"
                             TextColor="White"
-                            FontSize="Large"
+                            FontSize="Medium"
                             FontAttributes="Bold"
                             />
                     

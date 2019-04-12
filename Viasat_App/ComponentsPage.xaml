@@ -1,27 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Viasat_App.ComponentsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-    ios:Page.UseSafeArea="true">
-    
+    ios:Page.UseSafeArea="true"
+             Title="Search results"
+             >
+
+
     <ContentPage.Content>
-        
+
         <StackLayout>
-             <Label HorizontalOptions="Center" VerticalOptions="Center"
-                Text="This is the Components page"
-                />
-        
-        <Button HorizontalOptions="Center" VerticalOptions="Center"
-                x:Name="searchButton"
-                Text="To ComponentSpecificPage"
-                />
-            
-        <Label
-                Text="Not implemented until we display the components (it will keep looping into the default item page"
-                />
+
+            <ListView Margin="2" HasUnevenRows="true" x:Name="ResultsListView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label
+                                            x:Name="itemNumberLabel"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center"
+                                            TextColor="#009FE3"
+                                            Text="{Binding ItemNumber}"
+                                            Margin="3"
+                                            />
+
+                                    <Label
+                                            x:Name="itemPartTypeLabel"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="Center"
+                                            Text="{Binding ItemPartType}"
+                                            TextColor="#202E39"
+                                            />
+
+                                    <Label
+                                            x:Name="itemDescriptionLabel"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="Center"
+                                            FontAttributes="Bold"
+                                            Text="{Binding ItemDescription}"
+                                            />
+
+                                </Grid>
+                            </ViewCell.View>
+
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
-        
     </ContentPage.Content>
-    
+
 </ContentPage>
