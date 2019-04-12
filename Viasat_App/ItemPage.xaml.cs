@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ItemType;
+using System.Linq;
 
 using Xamarin.Forms;
 
@@ -11,14 +12,21 @@ namespace Viasat_App
         public ItemPage(ItemModel itemReceived)
         {
             InitializeComponent();
+            item = itemReceived;
             populatePage(itemReceived);
+
         }
+
+        public ItemModel item;
+        public List<String> components_id_List = new List<string>();
+        public string temp;
 
         //START: BUTTONS EVENTS #######################################################
 
         private async void componentsButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ComponentsPage());
+            components_id_List = item.components.Split(',').ToList();
+            await Navigation.PushAsync(new ComponentsPage(components_id_List));
         }
 
         private async void commentsButton_Clicked(object sender, EventArgs e)
@@ -43,8 +51,6 @@ namespace Viasat_App
             itemRevisionLabel.Text = itemReceived.revision.ToString();
             itemPartTypeLabel.Text = itemReceived.part_type;
             itemComponentsLabel.Text = itemReceived.components;
-
-
         }
 
     }

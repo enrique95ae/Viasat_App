@@ -18,8 +18,6 @@ namespace Viasat_App
         //public ItemJson itemDeserilized;
 
         public List<string> parametersList;
-        string tempCompID;
-        char tempChar;
 
         public SearchPage()
         {
@@ -64,26 +62,6 @@ namespace Viasat_App
 
             //parsing from json string to a list of objects of our item model type
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
-
-            //from list of chars to list of ids(strings)
-            //for (int i=0; i<itemsList.Count; i++)
-            //{
-            //    if (itemsList[i].components != null)
-            //    {
-            //        for (int j = 0; j < itemsList[i].components.Length; j++)
-            //        {
-
-            //            tempChar = itemsList[i].components[j];
-            //            if (tempChar != ',' && tempChar != '[' && tempChar != ']')
-            //            {
-            //                tempCompID += tempChar;
-            //            }
-
-            //        }
-            //    }
-            //    itemsList[i].componentsIDs.Add(tempCompID);
-            //    tempCompID = "";
-            //}
 
             //open the results page and pass the list of items to populate it
             await Navigation.PushAsync(new ResultsPage(itemsList));

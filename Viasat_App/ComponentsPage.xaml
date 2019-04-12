@@ -5,23 +5,10 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
     ios:Page.UseSafeArea="true">
     
-    <ContentPage.Content>
-        
         <StackLayout>
-             <Label HorizontalOptions="Center" VerticalOptions="Center"
-                Text="This is the Components page"
-                />
-        
-        <Button HorizontalOptions="Center" VerticalOptions="Center"
-                x:Name="searchButton"
-                Text="To ComponentSpecificPage"
-                />
-            
-        <Label
-                Text="Not implemented until we display the components (it will keep looping into the default item page"
-                />
+            <ListView HasUnevenRows="true" x:Name="ComponentsListView" HorizontalOptions="Center" VerticalOptions="Center">
+                
+                </ListView>
         </StackLayout>
-        
-    </ContentPage.Content>
     
 </ContentPage>
