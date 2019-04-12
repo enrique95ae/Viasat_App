@@ -27,6 +27,7 @@ namespace ItemType
         [JsonProperty("revision")]
         public int revision { get; set; }
 
+        //so each id can be displayed in one cell of a list view and can be clicked
         public List<string> componentsIDs { get; set; }
     }
 

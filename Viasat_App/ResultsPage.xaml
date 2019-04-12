@@ -32,8 +32,8 @@
                                             Grid.Column="0"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
-                                            TextColor="#009FE3"
-                                            Text="#"
+                                            TextColor="#BED733"
+                                            Text="Item #:"
                                             Margin="3"
                                             FontAttributes="Bold"
                                             />
