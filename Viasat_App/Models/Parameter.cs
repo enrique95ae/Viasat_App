@@ -7,13 +7,7 @@ namespace Viasat_App
 {
     public class Parameter
     {
-        public string ParameterSelection { set; get; }
-
-        public List<PickerItem> PickerItems { set; get; }
-
-        public class PickerItem
-        {
-            public string Name { get; set; }
-        }
+        public string key { get; set; }
+        public string value { get; set; } 
     }
 }

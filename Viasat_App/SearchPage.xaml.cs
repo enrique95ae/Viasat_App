@@ -13,24 +13,13 @@ namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
     {
-
-        public struct parameter
-        {
-            public string key;
-            public string value;
-        }
-
-
-        public ObservableCollection<parameter> parametersList = new ObservableCollection<parameter>();
-
-
+        public ObservableCollection<Parameter> parametersList = new ObservableCollection<Parameter>();
 
         public SearchPage()
         {
             InitializeComponent();
             ParameterListView.ItemsSource = parametersList;
         }
-
 
         //START: BUTTONS EVENTS #######################################################
 
@@ -54,6 +43,22 @@ namespace Viasat_App
             string endpointSt = "http://enriqueae.com/ViasatTest/json2.json";
             Uri apiUri = new Uri(endpointSt);
 
+
+            /*
+             * 
+             * 
+             *                      
+             *                      CREATING
+             *                      SERIALIZING
+             *                      SENDING REQUEST FUNCTIONS HERE
+             * 
+             * 
+             * 
+             */
+
+
+
+
             //creating a http client to handle the async data retreival
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(apiUri);
@@ -64,15 +69,17 @@ namespace Viasat_App
             //parsing from json string to a list of objects of our item model type
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
 
+            //reset the parameters list for a future serch
+            parametersList.Clear();
+
             //open the results page and pass the list of items to populate it
             await Navigation.PushAsync(new ResultsPage(itemsList));
         }
 
-
         void addParameterButton_Clicked(object sender, System.EventArgs e)
         {
 
-            parameter tempParam = new parameter();
+            Parameter tempParam = new Parameter();
 
             tempParam.key = ParametersPicker.SelectedItem.ToString();
             tempParam.value = ParameterEntry.Text;
@@ -82,11 +89,49 @@ namespace Viasat_App
                 parametersList.Add(tempParam);
                 Console.WriteLine(tempParam.key);
                 Console.WriteLine(tempParam.value);
+                ParameterEntry.Text = "";
             }
             else
             {
                 DisplayAlert("Duplicate parameter", "The parameter has already been selected for this search.", "Ok");
             }
+        }
+
+        public void createRequest(ObservableCollection<Parameter> list)
+        {
+            //temporary object which will hold all the search parameters
+            //this object is to be serizlized into a json string to be sent as a request to the API
+            ItemModel tempItem = new ItemModel();
+
+            //Loop to go through all the parameters entered by the user and put them into the object's variables
+            foreach(Parameter param in list)
+            {
+                if(param.key == "_id")
+                {
+                    tempItem.id = param.value;
+                }
+                else if(param.key == "item_number")
+                {
+                    tempItem.item_number = Convert.ToInt32(param.value);
+                }
+                else if(param.key == "revision")
+                {
+                    tempItem.revision = Convert.ToInt32(param.value);
+                }
+                else if(param.key == "description")
+                {
+                    tempItem.description = param.value;
+                }
+                else if(param.key == "part_type")
+                {
+                    tempItem.part_type = param.value;
+                }
+            }
+
+
+
+
+
         }
 
         //END: BUTTONS EVENTS #######################################################
