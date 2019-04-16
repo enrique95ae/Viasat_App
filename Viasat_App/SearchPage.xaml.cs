@@ -14,6 +14,7 @@ namespace Viasat_App
     public partial class SearchPage : ContentPage
     {
         public ObservableCollection<Parameter> parametersList = new ObservableCollection<Parameter>();
+        public string requestString;
 
         public SearchPage()
         {
@@ -43,7 +44,6 @@ namespace Viasat_App
             string endpointSt = "http://enriqueae.com/ViasatTest/json2.json";
             Uri apiUri = new Uri(endpointSt);
 
-
             /*
              * 
              * 
@@ -56,8 +56,7 @@ namespace Viasat_App
              * 
              */
 
-
-
+            createRequest(parametersList);
 
             //creating a http client to handle the async data retreival
             HttpClient client = new HttpClient();
@@ -78,7 +77,6 @@ namespace Viasat_App
 
         void addParameterButton_Clicked(object sender, System.EventArgs e)
         {
-
             Parameter tempParam = new Parameter();
 
             tempParam.key = ParametersPicker.SelectedItem.ToString();
@@ -87,8 +85,6 @@ namespace Viasat_App
             if (!parametersList.Any(p => p.key == tempParam.key))
             {
                 parametersList.Add(tempParam);
-                Console.WriteLine(tempParam.key);
-                Console.WriteLine(tempParam.value);
                 ParameterEntry.Text = "";
             }
             else
@@ -128,12 +124,11 @@ namespace Viasat_App
                 }
             }
 
+            //item serialized to be sent as the request to the API
+            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(tempItem);
 
-
-
-
+            requestString = jsonString;
         }
-
         //END: BUTTONS EVENTS #######################################################
     }
 };
