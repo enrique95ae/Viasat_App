@@ -9,6 +9,9 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
 
+//external info:
+//https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
+
 namespace Viasat_App
 {
     public partial class SearchPage : ContentPage
@@ -44,19 +47,17 @@ namespace Viasat_App
             string endpointSt = "http://enriqueae.com/ViasatTest/json2.json";
             Uri apiUri = new Uri(endpointSt);
 
-            /*
-             * 
-             * 
-             *                      
-             *                      CREATING
-             *                      SERIALIZING
-             *                      SENDING REQUEST FUNCTIONS HERE
-             * 
-             * 
-             * 
-             */
 
+            //======================================================================================================
+            //======================================REQUEST CODE HERE===============================================
+            //======================================================================================================
             createRequest(parametersList);
+            Console.WriteLine(requestString);
+            //======================================================================================================
+            //======================================================================================================
+            //======================================================================================================
+
+
 
             //creating a http client to handle the async data retreival
             HttpClient client = new HttpClient();
@@ -93,6 +94,10 @@ namespace Viasat_App
             }
         }
 
+
+        //PURPOSE: to use the parameters entered by the user and create a custom request json string
+        //PARAMETERS: parameters list
+        //ALGORITHM:
         public void createRequest(ObservableCollection<Parameter> list)
         {
             //temporary object which will hold all the search parameters
