@@ -7,16 +7,42 @@
     
     <ContentPage.Content>
         
-        <StackLayout>
-        <Label 
-            HorizontalOptions="Start" 
-            VerticalOptions="Center"
-            Text="Search For"
+        <StackLayout Margin="10">
+            
+            <BoxView BackgroundColor="White" HeightRequest="20"/>
+                
+                
+            
+        <Picker x:Name="ParametersPicker" HorizontalOptions="FillAndExpand" Title="Parameters">
+            <Picker.Items>
+            <x:String>Part Type</x:String>
+            <x:String>Item Number</x:String>
+            <x:String>_id</x:String>
+            <x:String>Revision number</x:String>
+            <x:String>Description</x:String>
+            </Picker.Items>
+        </Picker>
+            
+            
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            
+            <Entry
+                x:Name="ParameterEntry" 
+                Placeholder="Enter a value"
+                HorizontalOptions="FillAndExpand"
+                Text=""
             />
-        <Entry
-            x:Name="searchEntry"
-            Placeholder="search"
+                
+            <Button
+                x:Name="addParameter_Button"
+                Text="Add"
+                FontAttributes="Bold"
+                TextColor="#BED733"
+                Clicked="addParameterButton_Clicked"
             />
+                
+        </StackLayout>
+        
         <Button 
             HorizontalOptions="Center" 
             VerticalOptions="Center"
@@ -24,33 +50,24 @@
             Text="Search"
             Clicked="resultsButton_Clicked"
             />
-        <ListView x:Name = "ParameterListView" >
+            
+        <ListView x:Name = "ParameterListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <Grid Padding="5">
-                                <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="7*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Picker
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    TextColor="Blue"
-                                    ItemsSource="{Binding parametersList}"
-                                    />
-                                <Entry
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    x:Name="ParameterEntry"
-                                    Placeholder="Userparameter"
-                                    TextColor="Blue"
-                                />
-                            </Grid>
+                            <StackLayout Orientation="Horizontal">
+                                    
+                                    <Label
+                                        TextColor="Black"
+                                        Text="{Binding key}"
+                                        />
+                                    <Label
+                                        TextColor="Black"
+                                        Text="{Binding value}"
+                                        />
+                                    </StackLayout>
+                                
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>

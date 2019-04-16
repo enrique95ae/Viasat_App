@@ -14,10 +14,23 @@ namespace Viasat_App
     public partial class SearchPage : ContentPage
     {
 
+        public struct parameter
+        {
+            public string key;
+            public string value;
+        }
+
+
+        public ObservableCollection<parameter> parametersList = new ObservableCollection<parameter>();
+
+
+
         public SearchPage()
         {
             InitializeComponent();
+            ParameterListView.ItemsSource = parametersList;
         }
+
 
         //START: BUTTONS EVENTS #######################################################
 
@@ -54,6 +67,28 @@ namespace Viasat_App
             //open the results page and pass the list of items to populate it
             await Navigation.PushAsync(new ResultsPage(itemsList));
         }
+
+
+        void addParameterButton_Clicked(object sender, System.EventArgs e)
+        {
+
+            parameter tempParam = new parameter();
+
+            tempParam.key = ParametersPicker.SelectedItem.ToString();
+            tempParam.value = ParameterEntry.Text;
+
+            if (!parametersList.Any(p => p.key == tempParam.key))
+            {
+                parametersList.Add(tempParam);
+                Console.WriteLine(tempParam.key);
+                Console.WriteLine(tempParam.value);
+            }
+            else
+            {
+                DisplayAlert("Duplicate parameter", "The parameter has already been selected for this search.", "Ok");
+            }
+        }
+
         //END: BUTTONS EVENTS #######################################################
     }
 };
