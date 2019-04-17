@@ -134,6 +134,13 @@ namespace Viasat_App
 
             requestString = jsonString;
         }
+
+        void Handle_DeleteParameter(object sender, EventArgs e)
+        {
+            var menuItem = (MenuItem)sender;
+            var parameterDelete = (Parameter)menuItem.CommandParameter;
+            parametersList.Remove(parameterDelete);
+        }
         //END: BUTTONS EVENTS #######################################################
     }
 };
