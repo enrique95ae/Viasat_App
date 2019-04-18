@@ -57,8 +57,6 @@ namespace Viasat_App
             //======================================================================================================
             //======================================================================================================
 
-
-
             //creating a http client to handle the async data retreival
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(apiUri);
@@ -130,7 +128,13 @@ namespace Viasat_App
             }
 
             //item serialized to be sent as the request to the API
-            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(tempItem);
+            //handles parameters not entered by the user, that way they are not included in the json string so the API doesn't have to parse and check for nulls.
+            var jsonString = JsonConvert.SerializeObject(tempItem,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
 
             requestString = jsonString;
         }
