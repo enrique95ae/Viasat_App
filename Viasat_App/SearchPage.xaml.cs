@@ -27,13 +27,13 @@ namespace Viasat_App
         }
 
         //START: BUTTONS EVENTS #######################################################
-        
+
         //PURPOSE: upon user click the app sends a request to the API and waits for a response and handles the incoming data accordingly:
         //PARAMETERS: navigation params
         //ALGORITHM:
         //  -Button is clicked
-        //  -API endpoint is created in a string according to the search parameters <-----  NOT YET
-        //  -HTTP client is created
+        //  -API endpoint is created in a string according to the search parameters 
+        //  -HTTP client is created and a POST request is sent (POST because the parameters are in the body instead of in the url)
         //  -App waits for a response in a JSON format
         //  -Response is checked for errors. If success data is parsed into an object of type: ItemData   <----- NOT YET
         private async void resultsButton_Clicked(object sender, EventArgs e)
@@ -63,7 +63,8 @@ namespace Viasat_App
 
                 //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
                 //  NOTE: if the api's base url changes this has to be modified.
-                var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr", httpContent);
+                //var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr", httpContent);
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
 
                 //verifying that response is not empty
                 if (httpResponse.Content != null)
