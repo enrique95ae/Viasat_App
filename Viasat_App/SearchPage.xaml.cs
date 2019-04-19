@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
-using System.Net.WebSockets;
+using System.Net;
 
 //external info:
 //https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
@@ -55,26 +55,39 @@ namespace Viasat_App
             createRequest(parametersList);
             Console.WriteLine(requestString);
 
-            var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
-
+            //Creating the http client which will provide us with the network capabilities
             using (var httpClient = new HttpClient())
             {
-                var httpResponse = await httpClient.PostAsync(apiUri, httpContent);
+                //request string to be sent to the API
+                var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
+                //  NOTE: if the api's base url changes this has to be modified.
+                var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr", httpContent);
+
+                //verifying that response is not empty
                 if (httpResponse.Content != null)
                 {
+                    //response into a usable var
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
-                    Console.WriteLine(responseContent);
+
+                    //DESERIALIZING CODE GOES HERE
+
+                    //debugging lines
+                    Console.WriteLine("JSON: " + requestString);
+                    Console.WriteLine("POST: " + httpContent.ToString());
+                    Console.WriteLine("GET: " + responseContent);
                 }
             }
 
 
 
-                //======================================================================================================
-                //======================================================================================================
-                //======================================================================================================
+            //======================================================================================================
+            //======================================================================================================
+            //======================================================================================================
 
-                //creating a http client to handle the async data retreival
-                HttpClient client = new HttpClient();
+            //creating a http client to handle the async data retreival
+            HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(apiUri);
 
             //response stream into a string
