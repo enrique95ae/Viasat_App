@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
-using System.Net;
 
 //external info:
 //https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
+//https://putsreq.com/ZIailWh2iEVMAOP0RdGr/inspect  <---- for testing the http requests
+
 
 namespace Viasat_App
 {
@@ -27,7 +27,7 @@ namespace Viasat_App
         }
 
         //START: BUTTONS EVENTS #######################################################
-
+        
         //PURPOSE: upon user click the app sends a request to the API and waits for a response and handles the incoming data accordingly:
         //PARAMETERS: navigation params
         //ALGORITHM:
