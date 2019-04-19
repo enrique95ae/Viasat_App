@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
+using System.Net.WebSockets;
 
 //external info:
 //https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
@@ -53,12 +54,27 @@ namespace Viasat_App
             //======================================================================================================
             createRequest(parametersList);
             Console.WriteLine(requestString);
-            //======================================================================================================
-            //======================================================================================================
-            //======================================================================================================
 
-            //creating a http client to handle the async data retreival
-            HttpClient client = new HttpClient();
+            var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+            using (var httpClient = new HttpClient())
+            {
+                var httpResponse = await httpClient.PostAsync(apiUri, httpContent);
+                if (httpResponse.Content != null)
+                {
+                    var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine(responseContent);
+                }
+            }
+
+
+
+                //======================================================================================================
+                //======================================================================================================
+                //======================================================================================================
+
+                //creating a http client to handle the async data retreival
+                HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(apiUri);
 
             //response stream into a string
@@ -136,6 +152,7 @@ namespace Viasat_App
                                 NullValueHandling = NullValueHandling.Ignore
                             });
 
+            //local string
             requestString = jsonString;
         }
 
