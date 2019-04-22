@@ -73,8 +73,6 @@ namespace Viasat_App
                     //response into a usable var
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
 
-                    //DESERIALIZING CODE GOES HERE
-
                     //debugging lines
                     //Console.WriteLine("JSON: " + requestString.ToUpper());
                     //Console.WriteLine("POST: " + httpContent.ToString());
@@ -83,8 +81,6 @@ namespace Viasat_App
                     responseString = responseContent;
                 }
             }
-
-
 
             //======================================================================================================
             //======================================================================================================
