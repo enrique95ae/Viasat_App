@@ -54,7 +54,7 @@ namespace Viasat_App
             //======================================REQUEST CODE HERE===============================================
             //======================================================================================================
             createRequest(parametersList);
-            Console.WriteLine(requestString);
+            //Console.WriteLine(requestString);
 
             //Creating the http client which will provide us with the network capabilities
             using (var httpClient = new HttpClient())
@@ -76,9 +76,9 @@ namespace Viasat_App
                     //DESERIALIZING CODE GOES HERE
 
                     //debugging lines
-                    Console.WriteLine("JSON: " + requestString.ToUpper());
-                    Console.WriteLine("POST: " + httpContent.ToString());
-                    Console.WriteLine("GET: " + responseContent);
+                    //Console.WriteLine("JSON: " + requestString.ToUpper());
+                    //Console.WriteLine("POST: " + httpContent.ToString());
+                    //Console.WriteLine("GET: " + responseContent);
 
                     responseString = responseContent;
                 }
@@ -96,7 +96,6 @@ namespace Viasat_App
 
             ////response stream into a string
             //string jsonContent = await response.Content.ReadAsStringAsync();
-            //
 
             //parsing from json string to a list of objects of our item model type
             //var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
