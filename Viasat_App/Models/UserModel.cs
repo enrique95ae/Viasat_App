@@ -12,15 +12,18 @@ namespace UserType
         public string UserLast { get; set; }
 
         [JsonProperty("permission_level")]
-        public string PermissionLevel { get; set; }
+        public int PermissionLevel { get; set; }
 
         [JsonProperty("notes")]
-        public string[] PersonalNotesList {get; set;}
+        public List<string> PersonalNotesList {get; set;}
 
-        [JsonProperty("history")]
-        public string[] itemsHistory { get; set; }
+        [JsonProperty("recently_viewed")]
+        public List<string> recentlyViewed { get; set; }
 
         [JsonProperty("favorites")]
-        public string[] favorites { get; set; }
+        public List<string> favorites { get; set; }
+
+        [JsonProperty("recent_comments")]
+        public List<string> recentComments { get; set; }
     }
 }

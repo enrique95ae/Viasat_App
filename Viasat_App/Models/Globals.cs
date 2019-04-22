@@ -1,10 +1,11 @@
-﻿using Xamarin.Forms;
-using UserType;
-
-namespace Viasat_App
+﻿namespace globals
 {
+    using Xamarin.Forms;
+    using UserType;
+
     public class Globals
     {
-        public UserModel theUser { get; set; }
+        // static UserModel TheUser { get; set; }
     }
+
 }

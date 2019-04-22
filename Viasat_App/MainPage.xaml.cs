@@ -10,9 +10,11 @@ namespace Viasat_App
 {
     public partial class MainPage : ContentPage
     {
-        //MainPage receives the username entered in the LoginPage after auth was successful and MainPage is pushed onto the pages stack.
-        public MainPage()
+        UserModel theUser;
+
+        public MainPage(UserModel user)
         {
+            theUser = user;
             InitializeComponent();
         }
 
@@ -25,7 +27,7 @@ namespace Viasat_App
 
         private async void profileButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProfilePage());
+            await Navigation.PushAsync(new ProfilePage(theUser));
         }
 
 

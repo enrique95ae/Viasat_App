@@ -7,15 +7,17 @@
     
     <StackLayout>
         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            
             <Label 
                 x:Name="nameLabel"
-                Text="{Binding UserName}"
-                />
+                Text=""
+            />
             
             <Label
                 x:Name="lastLabel"
-                Text="{Binding UserLast}"
+                Text=""
             />
+            
         </StackLayout>
         
         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
@@ -25,7 +27,7 @@
             
             <Label
                 x:Name="permissionLabel"
-                Text="{Binding PermissionLevel}"
+                Text=""
             />
         </StackLayout>
         
