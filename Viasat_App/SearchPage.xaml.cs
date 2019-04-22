@@ -19,6 +19,7 @@ namespace Viasat_App
     {
         public ObservableCollection<Parameter> parametersList = new ObservableCollection<Parameter>();
         public string requestString;
+        public string responseString;
 
         public SearchPage()
         {   
@@ -78,6 +79,8 @@ namespace Viasat_App
                     Console.WriteLine("JSON: " + requestString.ToUpper());
                     Console.WriteLine("POST: " + httpContent.ToString());
                     Console.WriteLine("GET: " + responseContent);
+
+                    responseString = responseContent;
                 }
             }
 
@@ -87,15 +90,17 @@ namespace Viasat_App
             //======================================================================================================
             //======================================================================================================
 
-            //creating a http client to handle the async data retreival
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(apiUri);
+            ////creating a http client to handle the async data retreival
+            //HttpClient client = new HttpClient();
+            //HttpResponseMessage response = await client.GetAsync(apiUri);
 
-            //response stream into a string
-            string jsonContent = await response.Content.ReadAsStringAsync();
+            ////response stream into a string
+            //string jsonContent = await response.Content.ReadAsStringAsync();
+            //
 
             //parsing from json string to a list of objects of our item model type
-            var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
+            //var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
+            var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
 
             //reset the parameters list for a future serch
             parametersList.Clear();
