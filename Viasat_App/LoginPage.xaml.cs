@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UserType;
 
 using Xamarin.Forms;
 
@@ -14,7 +15,7 @@ namespace Viasat_App
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage(usernameEntry.Text));
+            await Navigation.PushAsync(new MainPage());
 
             //LOGIN CODE HERE ############################################################
 
@@ -33,6 +34,7 @@ namespace Viasat_App
             //}
 
             //############################################################################
+
 
         }
     }

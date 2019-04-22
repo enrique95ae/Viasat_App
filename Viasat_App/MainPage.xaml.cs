@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using UserType;
 
 namespace Viasat_App
 {
     public partial class MainPage : ContentPage
     {
         //MainPage receives the username entered in the LoginPage after auth was successful and MainPage is pushed onto the pages stack.
-        public MainPage(string username)
+        public MainPage()
         {
             InitializeComponent();
         }

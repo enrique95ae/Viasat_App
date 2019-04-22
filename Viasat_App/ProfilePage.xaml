@@ -9,14 +9,49 @@
         <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
             <Label 
                 x:Name="nameLabel"
-                Text="{Binding userName}"
+                Text="{Binding UserName}"
                 />
             
             <Label
                 x:Name="lastLabel"
-                Text="{Binding userLast}"
+                Text="{Binding UserLast}"
             />
         </StackLayout>
+        
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <Label 
+                Text="Permission Level: "
+                />
+            
+            <Label
+                x:Name="permissionLabel"
+                Text="{Binding PermissionLevel}"
+            />
+        </StackLayout>
+        
+        <Button
+            Text="Favorites"
+            TextColor="White"
+            FontAttributes="Bold"
+            BackgroundColor="#BED733"
+            
+            />
+        
+        <Button
+            Text="History"
+            TextColor="White"
+            FontAttributes="Bold"
+            BackgroundColor="#BED733"
+            
+            />
+        
+        <Button
+            Text="Recent comments"
+            TextColor="White"
+            FontAttributes="Bold"
+            BackgroundColor="#BED733"
+            
+            />
         
         
 
