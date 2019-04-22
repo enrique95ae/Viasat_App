@@ -21,7 +21,7 @@ namespace Viasat_App
         public string requestString;
 
         public SearchPage()
-        {
+        {   
             InitializeComponent();
             ParameterListView.ItemsSource = parametersList;
         }
@@ -63,8 +63,8 @@ namespace Viasat_App
 
                 //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
                 //  NOTE: if the api's base url changes this has to be modified.
-                //var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr", httpContent);
-                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/search", httpContent);
+                // var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr/", httpContent);
 
                 //verifying that response is not empty
                 if (httpResponse.Content != null)
@@ -75,7 +75,7 @@ namespace Viasat_App
                     //DESERIALIZING CODE GOES HERE
 
                     //debugging lines
-                    Console.WriteLine("JSON: " + requestString);
+                    Console.WriteLine("JSON: " + requestString.ToUpper());
                     Console.WriteLine("POST: " + httpContent.ToString());
                     Console.WriteLine("GET: " + responseContent);
                 }

@@ -16,15 +16,26 @@
                     <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 
-                <Label 
-                    x:Name="itemTitleLabel"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Text="{Binding id}"
-                    Grid.Row="0"
-                    FontSize="Large"
-                    TextColor="#202E39"
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="0">
+                    
+                    <Label 
+                        x:Name="itemTitleLabel"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding id}"
+                        FontSize="Large"
+                        TextColor="#202E39"
                     />
+                    
+                    <ImageButton
+                        x:Name="favButton"
+                        Source="noFavImg.png"
+                        HeightRequest="30"
+                        WidthRequest="30"
+                    />
+                    
+                </StackLayout>
+               
                 
                 <TableView HasUnevenRows="true" Grid.Row="1" Margin="2">
                     <TableRoot>

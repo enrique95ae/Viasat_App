@@ -97,12 +97,6 @@
                 </ListView.ItemTemplate>
             </ListView>
             
-            <Image
-                x:Name="logoImage"
-                Source="http://www.arconics.com/wp-content/uploads/sites/7/2017/12/Viasat-new-logo-nov-17.png"
-                HeightRequest="100"
-                WidthRequest="320"
-                />
             <BoxView
                 BackgroundColor="White"
                 MinimumWidthRequest="500"

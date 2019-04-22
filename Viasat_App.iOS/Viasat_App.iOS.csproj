@@ -158,4 +158,8 @@
       <Name>Viasat_App</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FavImg.png" />
+    <BundleResource Include="Resources\noFavImg.png" />
+  </ItemGroup>
 </Project>
