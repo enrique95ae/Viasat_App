@@ -1,11 +1,30 @@
-﻿using Xamarin.Forms;
-
-namespace Viasat_App
+﻿namespace Viasat_App
 {
-    public class UserModel
+    using System;
+    using System.Collections.Generic;
+
+    using System.Globalization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
+    public partial class UserModel
     {
+        [JsonProperty("user_name")]
         public string UserName { get; set; }
-        public string UserLast { get; set; }
-        public string UserPermissionLevel { get; set; }
+
+        //[JsonProperty("user_last")]
+        //public string UserLast { get; set; }
+
+        [JsonProperty("permission_level")]
+        public string PermissionLevel { get; set; }
+
+        [JsonProperty("notes")]
+        public int[] PersonalNotesList {get; set;}
+
+        [JsonProperty("history")]
+        public string[] itemsHistory { get; set; }
+
+        [JsonProperty("favorites")]
+
     }
 }
