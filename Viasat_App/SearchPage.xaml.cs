@@ -32,29 +32,16 @@ namespace Viasat_App
         //PURPOSE: upon user click the app sends a request to the API and waits for a response and handles the incoming data accordingly:
         //PARAMETERS: navigation params
         //ALGORITHM:
-        //  -Button is clicked
         //  -API endpoint is created in a string according to the search parameters 
         //  -HTTP client is created and a POST request is sent (POST because the parameters are in the body instead of in the url)
         //  -App waits for a response in a JSON format
-        //  -Response is checked for errors. If success data is parsed into an object of type: ItemData   <----- NOT YET
+        //  -Response is checked for errors. If success data is parsed into an object of type: ItemModel
         private async void resultsButton_Clicked(object sender, EventArgs e)
         {
-            /*
-             * Logic for building a custom request based on the search parameters selected goes here.
-             * As of right now the search is harcoded so we have a working api connection, data retreival and parsing.
-             * Needs to be implemented in order to make searches dynamic.
-             */
-
-            //setting up endpoint
-            string endpointSt = "http://enriqueae.com/ViasatTest/json2.json";
-            Uri apiUri = new Uri(endpointSt);
-
-
             //======================================================================================================
             //======================================REQUEST CODE HERE===============================================
             //======================================================================================================
             createRequest(parametersList);
-            //Console.WriteLine(requestString);
 
             //Creating the http client which will provide us with the network capabilities
             using (var httpClient = new HttpClient())
@@ -65,6 +52,8 @@ namespace Viasat_App
                 //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
                 //  NOTE: if the api's base url changes this has to be modified.
                 var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/search", httpContent);
+
+                //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
                 // var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr/", httpContent);
 
                 //verifying that response is not empty
@@ -73,7 +62,7 @@ namespace Viasat_App
                     //response into a usable var
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
 
-                    //debugging lines
+                    //debugging
                     //Console.WriteLine("JSON: " + requestString.ToUpper());
                     //Console.WriteLine("POST: " + httpContent.ToString());
                     //Console.WriteLine("GET: " + responseContent);
@@ -81,20 +70,11 @@ namespace Viasat_App
                     responseString = responseContent;
                 }
             }
-
             //======================================================================================================
             //======================================================================================================
             //======================================================================================================
-
-            ////creating a http client to handle the async data retreival
-            //HttpClient client = new HttpClient();
-            //HttpResponseMessage response = await client.GetAsync(apiUri);
-
-            ////response stream into a string
-            //string jsonContent = await response.Content.ReadAsStringAsync();
 
             //parsing from json string to a list of objects of our item model type
-            //var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(jsonContent);
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
 
             //reset the parameters list for a future serch
