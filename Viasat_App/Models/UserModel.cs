@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace UserType
 {
@@ -15,15 +16,15 @@ namespace UserType
         public int PermissionLevel { get; set; }
 
         [JsonProperty("notes")]
-        public List<string> PersonalNotesList {get; set;}
+        public ObservableCollection<string> PersonalNotesList {get; set;}
 
         [JsonProperty("recently_viewed")]
-        public List<string> recentlyViewed { get; set; }
+        public ObservableCollection<string> RecentlyViewed { get; set; }
 
         [JsonProperty("favorites")]
-        public List<string> favorites { get; set; }
+        public ObservableCollection<string> Favorites { get; set; }
 
         [JsonProperty("recent_comments")]
-        public List<string> recentComments { get; set; }
+        public ObservableCollection<string> RecentComments { get; set; }
     }
 }

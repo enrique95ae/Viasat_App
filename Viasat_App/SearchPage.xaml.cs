@@ -51,7 +51,7 @@ namespace Viasat_App
 
                 //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
                 //  NOTE: if the api's base url changes this has to be modified.
-                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/search", httpContent);
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/partialobj", httpContent);
 
                 //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
                 // var httpResponse = await httpClient.PostAsync("https://putsreq.com/ZIailWh2iEVMAOP0RdGr/", httpContent);
@@ -63,9 +63,9 @@ namespace Viasat_App
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
 
                     //debugging
-                    //Console.WriteLine("JSON: " + requestString.ToUpper());
-                    //Console.WriteLine("POST: " + httpContent.ToString());
-                    //Console.WriteLine("GET: " + responseContent);
+                    Console.WriteLine("JSON: " + requestString.ToUpper());
+                    Console.WriteLine("POST: " + httpContent.ToString());
+                    Console.WriteLine("GET: " + responseContent);
 
                     responseString = responseContent;
                 }
@@ -115,23 +115,23 @@ namespace Viasat_App
             //Loop to go through all the parameters entered by the user and put them into the object's variables
             foreach(Parameter param in list)
             {
-                if(param.key == "_id")
+                if(param.key == "ID")
                 {
                     tempItem.id = param.value;
                 }
-                else if(param.key == "item_number")
+                else if(param.key == "Item Number")
                 {
                     tempItem.item_number = Convert.ToInt32(param.value);
                 }
-                else if(param.key == "revision")
+                else if(param.key == "Revision")
                 {
                     tempItem.revision = Convert.ToInt32(param.value);
                 }
-                else if(param.key == "description")
+                else if(param.key == "Description")
                 {
                     tempItem.description = param.value;
                 }
-                else if(param.key == "part_type")
+                else if(param.key == "Part Type")
                 {
                     tempItem.part_type = param.value;
                 }

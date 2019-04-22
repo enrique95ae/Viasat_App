@@ -15,11 +15,11 @@
             
             <Picker x:Name="ParametersPicker" HorizontalOptions="FillAndExpand" Title="Parameters">
                 <Picker.Items>
-                <x:String>part_type</x:String>
-                <x:String>item_number</x:String>
-                <x:String>_id</x:String>
-                <x:String>revision</x:String>
-                <x:String>description</x:String>
+                <x:String>Part Type</x:String>
+                <x:String>Item Number</x:String>
+                <x:String>ID</x:String>
+                <x:String>Revision</x:String>
+                <x:String>Description</x:String>
                 </Picker.Items>
             </Picker>
             
