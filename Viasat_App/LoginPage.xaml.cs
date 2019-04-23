@@ -20,9 +20,9 @@ namespace Viasat_App
 
             theUser.RecentlyViewed = new System.Collections.ObjectModel.ObservableCollection<string>();
 
-            theUser.RecentlyViewed.Add("759714506");
-            theUser.RecentlyViewed.Add("923119778");
-            theUser.RecentlyViewed.Add("609631598");
+            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc08");
+            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc25");
+            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc5b");
         }
 
         private async void loginButton_Clicked(object sender, EventArgs e)

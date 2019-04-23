@@ -56,6 +56,9 @@ namespace Viasat_App
                 //  NOTE: if the api's base url changes this has to be modified.
                 var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
 
+                //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
+                //var httpResponse = await httpClient.PostAsync("https://putsreq.com/qmumqAwIq9s5RBEfbNfh", httpContent);
+
                 //verifying that response is not empty
                 if (httpResponse.Content != null)
                 {
@@ -63,9 +66,9 @@ namespace Viasat_App
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
 
                     //debugging
-                    Console.WriteLine("JSON: " + requestString.ToUpper());
-                    Console.WriteLine("POST: " + httpContent.ToString());
-                    Console.WriteLine("GET: " + responseContent);
+                    //Console.WriteLine("JSON: " + requestString.ToUpper());
+                    //Console.WriteLine("POST: " + httpContent.ToString());
+                    //Console.WriteLine("GET: " + responseContent);
 
                     responseString = responseContent;
                 }
