@@ -23,6 +23,10 @@ namespace Viasat_App
             theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc08");
             theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc25");
             theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc5b");
+
+            theUser.Favorites = new System.Collections.ObjectModel.ObservableCollection<string>();
+
+
         }
 
         private async void loginButton_Clicked(object sender, EventArgs e)

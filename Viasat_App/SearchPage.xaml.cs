@@ -63,7 +63,7 @@ namespace Viasat_App
                     var responseContent = await httpResponse.Content.ReadAsStringAsync();
 
                     //debugging
-                    Console.WriteLine("JSON: " + requestString.ToUpper());
+                    Console.WriteLine("JSON: " + requestString);
                     Console.WriteLine("POST: " + httpContent.ToString());
                     Console.WriteLine("GET: " + responseContent);
 
