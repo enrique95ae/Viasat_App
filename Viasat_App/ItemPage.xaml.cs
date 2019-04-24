@@ -24,63 +24,67 @@ namespace Viasat_App
             InitializeComponent();
             item = itemReceived;
             populatePage(itemReceived);
+            itemsList.Clear();
         }
 
         //START: BUTTONS EVENTS #######################################################
 
         private async void componentsButton_Clicked(object sender, EventArgs e)
         {
-            for (int i = 0; i < item.componentsIDs.Count(); i++)
-            {
-                //string itemNum = item.componentsIDs[i];
-                int itemNum = item.item_number.GetValueOrDefault();
-                ItemModel tempItem = new ItemModel();
-                tempItem.item_number = itemNum;
-
-                //item serialized to be sent as the request to the API
-                //handles parameters not entered by the user, that way they are not included in the json string so the API doesn't have to parse and check for nulls.
-                var jsonString = JsonConvert.SerializeObject(tempItem,
-                                Newtonsoft.Json.Formatting.None,
-                                new JsonSerializerSettings
-                                {
-                                    NullValueHandling = NullValueHandling.Ignore
-                                });
-
-                requestString = jsonString.ToLower();
-
-                //Creating the http client which will provide us with the network capabilities
-                using (var httpClient = new HttpClient())
+            itemsList.Clear();
+                for (int i = 0; i < item.componentsIDs.Count(); i++)
                 {
-                    //request string to be sent to the API
-                    var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+                    //string itemNum = item.componentsIDs[i];
+                    int itemNum = Int32.Parse(item.componentsIDs[i]);
+                    ItemModel tempItem = new ItemModel();
+                    tempItem.item_number = itemNum;
 
-                    //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
-                    //  NOTE: if the api's base url changes this has to be modified.
-                    var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/partialobj", httpContent);
+                    //item serialized to be sent as the request to the API
+                    //handles parameters not entered by the user, that way they are not included in the json string so the API doesn't have to parse and check for nulls.
+                    var jsonString = JsonConvert.SerializeObject(tempItem,
+                                    Newtonsoft.Json.Formatting.None,
+                                    new JsonSerializerSettings
+                                    {
+                                        NullValueHandling = NullValueHandling.Ignore
+                                    });
 
-                    //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
-                    //var httpResponse = await httpClient.PostAsync("https://putsreq.com/qmumqAwIq9s5RBEfbNfh", httpContent);
+                    requestString = jsonString.ToLower();
 
-                    //verifying that response is not empty
-                    if (httpResponse.Content != null)
+                    //Creating the http client which will provide us with the network capabilities
+                    using (var httpClient = new HttpClient())
                     {
-                        //response into a usable var
-                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                        //request string to be sent to the API
+                        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
 
-                        //debugging
-                        Console.WriteLine("JSON: " + requestString.ToString());
-                        Console.WriteLine("POST: " + httpContent.ToString());
-                        Console.WriteLine("GET: " + responseContent);
+                        //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
+                        //  NOTE: if the api's base url changes this has to be modified.
+                        var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/partialobj", httpContent);
 
-                        responseString = responseContent;
+                        //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
+                        //var httpResponse = await httpClient.PostAsync("https://putsreq.com/qmumqAwIq9s5RBEfbNfh", httpContent);
+
+                        //verifying that response is not empty
+                        if (httpResponse.Content != null)
+                        {
+                            //response into a usable var
+                            var responseContent = await httpResponse.Content.ReadAsStringAsync();
+
+                            //debugging
+                            Console.WriteLine("JSON: " + requestString.ToString());
+                            Console.WriteLine("POST: " + httpContent.ToString());
+                            Console.WriteLine("GET: " + "LOOP: " + i + " " + responseContent);
+
+                            responseString = responseContent;
+                        }
                     }
+
+                    var itemInArray = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+                    var itemReceived = itemInArray[0];
+
+                    itemsList.Add(itemReceived);
                 }
-            
-                var itemInArray = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-                var itemReceived = itemInArray[0];
-                itemsList.Add(itemReceived);
-            
-            }
+          
+
         
             //await Navigation.PushAsync(new ComponentsPage(componentsList));
             await Navigation.PushAsync(new ResultsPage(itemsList));

@@ -4,7 +4,7 @@
              x:Class="Viasat_App.ResultsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
     ios:Page.UseSafeArea="true"
-             Title="Search results"
+             Title="Results"
              >
     
     <ContentPage.Content>
