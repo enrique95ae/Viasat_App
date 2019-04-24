@@ -150,13 +150,25 @@
                                                 <Span
                                                     Text="  "
                                                     />
-                                                
-                                                <Span x:Name="itemComponentsLabel"
-                                                    Text="{Binding Components}"
-                                                    />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
+                                
+                                
+                                        <ListView x:Name="componentsListview">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <ViewCell.View>
+                                                            <Label 
+                                                                x:Name="componentLabel"
+                                                                Text="{Binding .}"
+                                                            />
+                                                        </ViewCell.View>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>>
+                                        </ListView>
                                     </ViewCell>
                                 </TableSection>
                         
