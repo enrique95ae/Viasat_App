@@ -23,9 +23,9 @@ namespace Viasat_App
 
         public ProfilePage(UserModel theUser)
         {
-            InitializeComponent();
-
             user = theUser;
+
+            InitializeComponent();
 
             nameLabel.Text = user.UserName;
             lastLabel.Text = user.UserLast;
@@ -34,6 +34,7 @@ namespace Viasat_App
 
         public async void recentlyViewedButton_Clicked(object sender, EventArgs e)
         {
+            itemsList.Clear();
             for(int i=0; i<user.RecentlyViewed.Count(); i++)
             {
                 string itemId = user.RecentlyViewed[i];
@@ -79,14 +80,13 @@ namespace Viasat_App
                     }
                 }
 
-                var itemInArray = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-                var itemReceived = itemInArray[0];
-                itemsList.Add(itemReceived);
 
-
+                List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+                itemsList.Add(tempItem2[0]);
+               
             }
 
-            await Navigation.PushAsync(new ResultsPage(itemsList));
+            await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList));
         }
     }
 }

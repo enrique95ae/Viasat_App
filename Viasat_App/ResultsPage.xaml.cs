@@ -77,6 +77,8 @@ namespace Viasat_App
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
             var itemReceived = itemsList[0];
 
+            globals.Globals.recentlyViewedList.Add(itemReceived);
+
             //calling the ItemPage into the stack and passing the selected item by the user
             await Navigation.PushAsync(new ItemPage(itemReceived));
         }

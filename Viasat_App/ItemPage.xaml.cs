@@ -12,7 +12,6 @@ namespace Viasat_App
 {
     public partial class ItemPage : ContentPage
     {
-
         public List<string> componentsList = new List<string>();
         public string requestString;
         public string responseString;
@@ -46,7 +45,7 @@ namespace Viasat_App
                                     new JsonSerializerSettings
                                     {
                                         NullValueHandling = NullValueHandling.Ignore
-                                    });
+                                   });
 
                     requestString = jsonString.ToLower();
 
@@ -72,7 +71,7 @@ namespace Viasat_App
                             //debugging
                             Console.WriteLine("JSON: " + requestString.ToString());
                             Console.WriteLine("POST: " + httpContent.ToString());
-                            Console.WriteLine("GET: " + "LOOP: " + i + " " + responseContent);
+                            Console.WriteLine("GET: " + /*"LOOP: " + i + " " +*/ responseContent);
 
                             responseString = responseContent;
                         }
@@ -84,8 +83,6 @@ namespace Viasat_App
                     itemsList.Add(itemReceived);
                 }
           
-
-        
             //await Navigation.PushAsync(new ComponentsPage(componentsList));
             await Navigation.PushAsync(new ResultsPage(itemsList));
         }

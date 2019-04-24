@@ -20,9 +20,9 @@ namespace Viasat_App
 
             theUser.RecentlyViewed = new System.Collections.ObjectModel.ObservableCollection<string>();
 
-            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc08");
-            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc25");
-            theUser.RecentlyViewed.Add("5cba2234d4245ea16081cc5b");
+            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64a");
+            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64b");
+            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64c");
 
             theUser.Favorites = new System.Collections.ObjectModel.ObservableCollection<string>();
 
