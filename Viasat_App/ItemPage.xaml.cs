@@ -24,6 +24,7 @@ namespace Viasat_App
             item = itemReceived;
             populatePage(itemReceived);
             itemsList.Clear();
+
         }
 
         //START: BUTTONS EVENTS #######################################################
@@ -97,20 +98,43 @@ namespace Viasat_App
             await Navigation.PushAsync(new InfoPage());
         }
 
-        //END: BUTTONS EVENTS #######################################################
+        void favButton_Clicked(object sender, System.EventArgs e)
+        {
+            if (!globals.Globals.favoritesList.Contains(item.id))
+            {
+                globals.Globals.favoritesList.Add(item.id);
+                favButton.Source = "FavImg.png";
+            }
+            else
+            {
+                globals.Globals.favoritesList.Remove(item.id);
+                favButton.Source = "noFavImg.png";
+            }
+        }
 
+        //END: BUTTONS EVENTS #######################################################
 
         //populating the GUI with the received item's data.
         private void populatePage(ItemModel itemReceived)
         {
-            itemTitleLabel.Text = itemReceived.id;
-            itemNumberLabel.Text = itemReceived.item_number.ToString();
-            itemDescriptionLabel.Text = itemReceived.description;
-            itemRevisionLabel.Text = itemReceived.revision.ToString();
-            itemPartTypeLabel.Text = itemReceived.part_type;
+            itemTitleLabel.Text = item.id;
+            itemNumberLabel.Text = item.item_number.ToString();
+            itemDescriptionLabel.Text = item.description;
+            itemRevisionLabel.Text = item.revision.ToString();
+            itemPartTypeLabel.Text = item.part_type;
             //itemComponentsLabel.Text = itemReceived.componentsIDs;
-            componentsListview.ItemsSource = itemReceived.componentsIDs;
-            componentsList = itemReceived.componentsIDs;
+            componentsListview.ItemsSource = item.componentsIDs;
+            componentsList = item.componentsIDs;
+
+            //set the favorite button depending if the item is already in the favorites list.
+            if (globals.Globals.favoritesList.Contains(item.id))
+            {
+                favButton.Source = "FavImg.png";
+            }
+            else
+            {
+                favButton.Source = "noFavImg.png";
+            }
         }
 
     }

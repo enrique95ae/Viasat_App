@@ -21,7 +21,7 @@ namespace Viasat_App
         {
             InitializeComponent();
             ResultsListView.ItemsSource = itemList;
-        }
+        } 
 
         //START: BUTTONS EVENTS #######################################################
 

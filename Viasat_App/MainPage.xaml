@@ -73,6 +73,7 @@
                 Grid.Row="0" Grid.Column="1"
                 BackgroundColor="#009FE3"
                 Margin ="0,3,0,3"
+                Clicked="historyButton_Clicked"
                 />
             
             <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"

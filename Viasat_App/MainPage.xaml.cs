@@ -30,6 +30,10 @@ namespace Viasat_App
             await Navigation.PushAsync(new ProfilePage(theUser));
         }
 
+        private async void historyButton_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList));
+        }
 
         //END: BUTTONS EVENTS ##########################################################
 

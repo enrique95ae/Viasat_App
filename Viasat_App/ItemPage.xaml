@@ -29,9 +29,9 @@
                     
                     <ImageButton
                         x:Name="favButton"
-                        Source="noFavImg.png"
                         HeightRequest="30"
                         WidthRequest="30"
+                        Clicked="favButton_Clicked"
                     />
                     
                 </StackLayout>
