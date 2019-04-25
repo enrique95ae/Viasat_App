@@ -119,7 +119,7 @@ namespace Viasat_App
             {
                 if(param.key == "ID")
                 {
-                    tempItem.id = param.value;
+                    tempItem.id = param.value.ToUpper();
                 }
                 else if(param.key == "Item Number")
                 {
@@ -131,11 +131,11 @@ namespace Viasat_App
                 }
                 else if(param.key == "Description")
                 {
-                    tempItem.description = param.value;
+                    tempItem.description = param.value.ToUpper();
                 }
                 else if(param.key == "Part Type")
                 {
-                    tempItem.part_type = param.value;
+                    tempItem.part_type = param.value.ToUpper();
                 }
             }
 
