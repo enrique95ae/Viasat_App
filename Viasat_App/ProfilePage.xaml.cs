@@ -18,7 +18,7 @@ namespace Viasat_App
         //ItemModel item = new ItemModel();
         public string responseString;
         public string requestString;
-        public List<ItemModel> itemsList = new List<ItemModel>();
+        public List<ItemModel> favoritesList = new List<ItemModel>();
 
 
         public ProfilePage(UserModel theUser)
@@ -34,7 +34,7 @@ namespace Viasat_App
 
         public async void recentlyViewedButton_Clicked(object sender, EventArgs e)
         {
-            itemsList.Clear();
+            //historyList.Clear();
             for(int i=0; i<user.RecentlyViewed.Count(); i++)
             {
                 string itemId = user.RecentlyViewed[i];
@@ -82,11 +82,45 @@ namespace Viasat_App
 
 
                 List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-                itemsList.Add(tempItem2[0]);
+                //historyList.Add(tempItem2[0]);
                
             }
 
             await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList));
+        }
+
+        public async void favoritesButton_Clicked(object sender, System.EventArgs e)
+        {
+            globals.Globals.favoritesItemsList.Clear();
+            foreach(string itemId in globals.Globals.favoritesList)
+            {
+                ItemModel tempItem = new ItemModel();
+                tempItem.id = itemId;
+
+                var jsonString = JsonConvert.SerializeObject(tempItem,
+                                Newtonsoft.Json.Formatting.None,
+                                new JsonSerializerSettings
+                                {
+                                    NullValueHandling = NullValueHandling.Ignore
+                                });
+
+                requestString = jsonString.ToLower();
+
+                using (var httpClient = new HttpClient())
+                {
+                    var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+                    var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
+                    if(httpResponse.Content != null)
+                    {
+                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                        responseString = responseContent;
+                    }
+                }
+
+                List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+                globals.Globals.favoritesItemsList.Add(tempItem2[0]);
+            }
+            await Navigation.PushAsync(new ResultsPage(globals.Globals.favoritesItemsList));
         }
     }
 }

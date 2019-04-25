@@ -36,7 +36,7 @@
             TextColor="White"
             FontAttributes="Bold"
             BackgroundColor="#BED733"
-            
+            Clicked="favoritesButton_Clicked"
             />
         
         <Button

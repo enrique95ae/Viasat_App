@@ -85,6 +85,7 @@
                 BackgroundColor="#009FE3"
                 Grid.Row="1" Grid.Column="0"
                 Margin ="0,3,0,3"
+                Clicked="favoritesButton_Clicked"
                 />
             
             <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"

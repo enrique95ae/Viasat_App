@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UserType;
+using ItemType;
 
 
 using Xamarin.Forms;
@@ -20,12 +21,8 @@ namespace Viasat_App
 
             theUser.RecentlyViewed = new System.Collections.ObjectModel.ObservableCollection<string>();
 
-            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64a");
-            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64b");
-            theUser.RecentlyViewed.Add("5cbe98938a8537a90101c64c");
-
             globals.Globals.favoritesList = new List<string>();
-
+            globals.Globals.favoritesItemsList = new List<ItemModel>();
 
         }
 

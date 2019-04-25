@@ -11,6 +11,7 @@
         // static UserModel TheUser { get; set; }
         public static List<ItemModel> recentlyViewedList { get; set; }
         public static List<string> favoritesList { get; set; }
+        public static List<ItemModel> favoritesItemsList { get; set; }
     }
 
 }
