@@ -107,7 +107,6 @@ namespace Viasat_App
 
         //PURPOSE: to use the parameters entered by the user and create a custom request json string
         //PARAMETERS: parameters list
-        //ALGORITHM:
         public void createRequest(ObservableCollection<Parameter> list)
         {
             //temporary object which will hold all the search parameters
