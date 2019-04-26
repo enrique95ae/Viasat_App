@@ -39,7 +39,7 @@ namespace Viasat_App
         private async void resultsButton_Clicked(object sender, EventArgs e)
         {
             //======================================================================================================
-            //======================================REQUEST CODE HERE===============================================
+            //======================================================================================================
             //======================================================================================================
             createRequest(parametersList);
 
@@ -77,7 +77,6 @@ namespace Viasat_App
             //parsing from json string to a list of objects of our item model type
 
             var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-
 
             //reset the parameters list for a future serch
             parametersList.Clear();
