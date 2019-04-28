@@ -6,25 +6,28 @@ namespace UserType
 {
     public class UserModel
     {
+        [JsonProperty("_id")]
+        public string _id { get; set; }
+
         [JsonProperty("user_name")]
-        public string UserName { get; set; }
+        public string name { get; set; }
 
         [JsonProperty("user_last")]
-        public string UserLast { get; set; }
+        public string lastName { get; set; }
 
         [JsonProperty("permission_level")]
-        public int PermissionLevel { get; set; }
+        public int permission_level { get; set; }
 
         [JsonProperty("notes")]
-        public ObservableCollection<string> PersonalNotesList {get; set;}
+        public ObservableCollection<string> personal_notes {get; set;}
 
         [JsonProperty("recently_viewed")]
-        public ObservableCollection<string> RecentlyViewed { get; set; }
+        public ObservableCollection<string> recently_viewed { get; set; }
 
         [JsonProperty("favorites")]
-        public ObservableCollection<string> Favorites { get; set; }
+        public ObservableCollection<string> favorites { get; set; }
 
-        [JsonProperty("recent_comments")]
-        public ObservableCollection<string> RecentComments { get; set; }
+        //[JsonProperty("recent_comments")]
+       //public ObservableCollection<string> RecentComments { get; set; }
     }
 }

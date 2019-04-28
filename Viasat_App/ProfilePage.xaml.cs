@@ -27,17 +27,17 @@ namespace Viasat_App
 
             InitializeComponent();
 
-            nameLabel.Text = user.UserName;
-            lastLabel.Text = user.UserLast;
-            permissionLabel.Text = user.PermissionLevel.ToString();
+            nameLabel.Text = user.name;
+            lastLabel.Text = user.lastName;
+            permissionLabel.Text = user.permission_level.ToString();
         }
 
         public async void recentlyViewedButton_Clicked(object sender, EventArgs e)
         {
             //historyList.Clear();
-            for(int i=0; i<user.RecentlyViewed.Count(); i++)
+            for(int i=0; i<user.recently_viewed.Count(); i++)
             {
-                string itemId = user.RecentlyViewed[i];
+                string itemId = user.recently_viewed[i];
                 ItemModel tempItem = new ItemModel();
                 tempItem.id = itemId;
 

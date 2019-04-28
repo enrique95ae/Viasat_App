@@ -15,11 +15,11 @@ namespace Viasat_App
         public LoginPage()
         {
             InitializeComponent();
-            theUser.UserName = "John";
-            theUser.UserLast = "Smith";
-            theUser.PermissionLevel = 9;
+            theUser.name = "John";
+            theUser.lastName = "Smith";
+            theUser.permission_level = 9;
 
-            theUser.RecentlyViewed = new System.Collections.ObjectModel.ObservableCollection<string>();
+            theUser.recently_viewed = new System.Collections.ObjectModel.ObservableCollection<string>();
 
             globals.Globals.favoritesList = new List<string>();
             globals.Globals.favoritesItemsList = new List<ItemModel>();
