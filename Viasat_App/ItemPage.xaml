@@ -19,10 +19,10 @@
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="0">
                     
                     <Label 
-                        x:Name="itemTitleLabel"
+                        x:Name="itemNumberLabel"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Text="{Binding id}"
+                        Text="{Binding ItemNumber}"
                         FontSize="Large"
                         TextColor="#202E39"
                     />
@@ -35,34 +35,10 @@
                     />
                     
                 </StackLayout>
-               
-                
+              
                 <TableView HasUnevenRows="true" Grid.Row="1" Margin="2">
                     <TableRoot>
-                        
-                        <TableSection>
-                            <ViewCell>
-                                <Label Margin="2">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span
-                                                Text="Number:"
-                                                FontAttributes="Bold"
-                                                TextColor="#009FE3"
-                                                />
-                                            
-                                            <Span
-                                                Text="  "
-                                                />
-                                            
-                                            <Span x:Name="itemNumberLabel"
-                                                Text="{Binding ItemNumber}"
-                                                />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </ViewCell>
-                            </TableSection>
+
                         
                             <TableSection>
                             <ViewCell>
@@ -150,7 +126,7 @@
                                 <ViewCell>
                                 
                                 
-                                    <ListView x:Name="componentsListview" ItemSelected="componentTapped">
+                                    <ListView x:Name="componentsListview" ItemSelected="componentTapped" HeightRequest="100" HorizontalOptions="Center">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -179,7 +155,7 @@
                                     
                                 <TableSection>
                                     <ViewCell>  
-                                        <ListView x:Name="notessListview" ItemSelected="componentTapped">
+                                        <ListView x:Name="notesListview" ItemSelected="noteTapped" HeightRequest="100">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
@@ -187,6 +163,7 @@
                                                             <Label 
                                                                 x:Name="componentLabel"
                                                                 Text="{Binding .}"
+                                                                HorizontalOptions="Center"
                                                             />
                                                         </ViewCell.View>
                                                     </ViewCell>
@@ -199,40 +176,18 @@
                         </TableRoot>
                     </TableView>
                         
-
-                    <Grid Grid.Row="2" HorizontalOptions="Center" Padding="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                       
-                        
-                        <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                            x:Name="commentsButton"
-                            Text="Comments"
-                            Clicked="commentsButton_Clicked"
-                            Grid.Column="1"
-                            BackgroundColor="#BED733"
-                            TextColor="White"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            />
-                    
-                        <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                            x:Name="infoButton"
-                            Text="+Info"
-                            Clicked="infoButton_Clicked"
-                            Grid.Column="2"
-                            BackgroundColor="#BED733"
-                            TextColor="White"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            CornerRadius="10"
-                            />
-                        </Grid>
-            </Grid>
+                </Grid>
+            
+                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                        x:Name="infoButton"
+                        Text="Used in"
+                        Clicked="infoButton_Clicked"
+                        BackgroundColor="#BED733"
+                        TextColor="White"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

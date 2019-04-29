@@ -27,49 +27,7 @@ namespace Viasat_App
 
         }
 
-        //private async void componentsButton_Clicked(object sender, EventArgs e)
-        //{
-        //    itemsList.Clear();
-        //    for (int i = 0; i < item.componentsIDs.Count(); i++)
-        //    {
-        //        //string itemNum = item.componentsIDs[i];
-        //        int itemNum = Int32.Parse(item.componentsIDs[i]);
-        //        ItemModel tempItem = new ItemModel();
-        //        tempItem.item_number = itemNum;
-
-        //        var jsonString = JsonConvert.SerializeObject(tempItem,
-        //                        Newtonsoft.Json.Formatting.None,
-        //                        new JsonSerializerSettings
-        //                        {
-        //                            NullValueHandling = NullValueHandling.Ignore
-        //                        });
-
-        //        requestString = jsonString.ToLower();
-
-        //        using (var httpClient = new HttpClient())
-        //        {
-        //            var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
-
-        //            var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/partialobj", httpContent);
-
-        //            if (httpResponse.Content != null)
-        //            {
-        //                var responseContent = await httpResponse.Content.ReadAsStringAsync();
-
-        //                responseString = responseContent;
-        //            }
-        //        }
-
-        //        var itemInArray = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-        //        var itemReceived = itemInArray[0];
-
-        //        itemsList.Add(itemReceived);
-        //    }
-        //    //await Navigation.PushAsync(new ComponentsPage(componentsList));
-        //    await Navigation.PushAsync(new ResultsPage(itemsList));
-        //}
-
-        private async void commentsButton_Clicked(object sender, EventArgs e)
+        private async void noteTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CommentsPage());
         }
@@ -138,7 +96,7 @@ namespace Viasat_App
         //populating the GUI with the received item's data.
         private void populatePage(ItemModel itemReceived)
         {
-            itemTitleLabel.Text = item.id;
+            //itemTitleLabel.Text = item.id;
             itemNumberLabel.Text = item.item_number.ToString();
             itemDescriptionLabel.Text = item.description;
             itemRevisionLabel.Text = item.revision.ToString();
