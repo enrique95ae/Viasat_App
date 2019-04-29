@@ -12,11 +12,14 @@ namespace NoteType
         [JsonProperty("author_id")]
         public string author_id { get; set; }
 
+        [JsonProperty("author")]
+        public string author { get; set; }
+
         [JsonProperty("note")]
         public string note { get; set; }
 
-        [JsonProperty("in_item")]
-        public string in_item { get; set; }
+        [JsonProperty("belongs")]
+        public string belongs { get; set; }
 
         [JsonProperty("date")]
         public string date { get; set; }

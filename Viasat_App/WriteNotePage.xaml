@@ -9,10 +9,10 @@
         
         
         <StackLayout Margin="10,35,10,10">
-            <Label Text="Notes" 
+            <Label Text="New Note:" 
                    HorizontalOptions="Center" 
                    FontAttributes="Bold" />
-            <Editor x:Name="_editor"
+            <Editor x:Name="textEditor"
                     Placeholder="Enter your note"
                     HeightRequest="100" />
 

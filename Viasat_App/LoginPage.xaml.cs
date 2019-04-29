@@ -39,8 +39,6 @@ namespace Viasat_App
 
 
 
-
-
         }
 
         private async void loginButton_Clicked(object sender, EventArgs e)
