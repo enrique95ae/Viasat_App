@@ -11,6 +11,7 @@ namespace Viasat_App
         {
             InitializeComponent();
             globals.Globals.recentlyViewedList = new System.Collections.Generic.List<ItemType.ItemModel>();
+            globals.Globals.TheUser = new UserType.UserModel();
 
             MainPage = new NavigationPage(new LoginPage());
         }

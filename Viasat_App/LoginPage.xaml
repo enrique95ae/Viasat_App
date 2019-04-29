@@ -31,11 +31,12 @@
                 BackgroundColor="#009FE3"
                 MinimumWidthRequest="500"
                 MinimumHeightRequest="700"
+                CornerRadius="10"
                 />
         
             <Label
                 x:Name="usernameLabel"
-                Text="Username:" 
+                Text="User ID:" 
                 FontAttributes="Bold"
                 TextColor="White"
                 FontSize="Medium"
@@ -66,6 +67,7 @@
                 BackgroundColor="#009FE3"
                 MinimumWidthRequest="500"
                 MinimumHeightRequest="700"
+                CornerRadius="10"
                 />
             
             <Button
@@ -75,7 +77,7 @@
                 BackgroundColor="#BED733"
                 FontSize="Medium"
                 Clicked="loginButton_Clicked"
-                CornerRadius="0"
+                CornerRadius="10"
                 />
         
         </StackLayout>

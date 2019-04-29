@@ -73,6 +73,16 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            
+            <Button
+                x:Name="newNoteButton"
+                Text="New"
+                TextColor="White"
+                FontAttributes="Bold"
+                BackgroundColor="#BED733"
+                Clicked="newNoteButton_Clicked"
+                />
+                
             </StackLayout>
         
     </ContentPage.Content>

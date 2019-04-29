@@ -28,6 +28,10 @@ namespace Viasat_App
             await Navigation.PushAsync(new CommentPage());
         }
 
+        private async void newNoteButton_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new WriteNotePage());
+        }
 
         private void populateList()
         {

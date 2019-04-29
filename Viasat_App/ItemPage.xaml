@@ -136,26 +136,50 @@
                                     </ViewCell>
                                 </TableSection>
                         
+                            <TableSection>
+                                <ViewCell>
+                                    <Label
+                                        Text="Components:"
+                                        FontAttributes="Bold"
+                                        TextColor="#009FE3"
+                                    />
+                                </ViewCell>
+                            </TableSection>
+                        
                              <TableSection>
                                 <ViewCell>
-                                    <Label Margin="2">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    Text="Components:"
-                                                    FontAttributes="Bold"
-                                                    TextColor="#009FE3"
-                                                    />
-                                                
-                                                <Span
-                                                    Text="  "
-                                                    />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
                                 
                                 
-                                        <ListView x:Name="componentsListview">
+                                    <ListView x:Name="componentsListview" ItemSelected="componentTapped">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.View>
+                                                        <Label 
+                                                            x:Name="componentLabel"
+                                                            Text="{Binding .}"
+                                                            />
+                                                        </ViewCell.View>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>>
+                                        </ListView>
+                                    </ViewCell>
+                                </TableSection>
+
+                                <TableSection>
+                                    <ViewCell>
+                                        <Label
+                                            Text="Notes:"
+                                            FontAttributes="Bold"
+                                            TextColor="#009FE3"
+                                        />
+                                    </ViewCell>
+                                </TableSection>
+                                    
+                                <TableSection>
+                                    <ViewCell>  
+                                        <ListView x:Name="notessListview" ItemSelected="componentTapped">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
@@ -182,17 +206,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                        
-                        <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                            x:Name="componentsButton"
-                            Text="Components"
-                            Clicked="componentsButton_Clicked"
-                            Grid.Column="0"
-                            BackgroundColor="#BED733"
-                            TextColor="White"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            />
+                       
                         
                         <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
                             x:Name="commentsButton"
@@ -203,6 +217,7 @@
                             TextColor="White"
                             FontSize="Large"
                             FontAttributes="Bold"
+                            CornerRadius="10"
                             />
                     
                         <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
@@ -214,6 +229,7 @@
                             TextColor="White"
                             FontSize="Large"
                             FontAttributes="Bold"
+                            CornerRadius="10"
                             />
                         </Grid>
             </Grid>
