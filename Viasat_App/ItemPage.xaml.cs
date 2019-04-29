@@ -7,23 +7,30 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
+using NoteType;
 
 namespace Viasat_App
 {
     public partial class ItemPage : ContentPage
     {
-        public ObservableCollection<string> componentsList = new ObservableCollection<string>();
-        public string requestString;
-        public string responseString;
-        public ItemModel item;
+        //since for this call the API returns an array with only 1 item in it, there is a need for a data structure capable of hold it so we can parse the json. 
+        //the only item in the returned array will take index 0 of the collection and then will be extracted into an ItemModel object to be used.
         public ObservableCollection<ItemModel> itemsList = new ObservableCollection<ItemModel>();
+        public ObservableCollection<string> componentsList = new ObservableCollection<string>(); //holds the components' IDs for this item
+        public ObservableCollection<NoteModel> notesList = new ObservableCollection<NoteModel>(); //holds the notes' IDs written about this item
+
+        public ItemModel item; //item to be used throughout the page
+
+        public string requestString; //will hold the json string to be sent to the API
+        public string responseString; //will hold the json string returned by the API
+
  
         public ItemPage(ItemModel itemReceived)
         {
             InitializeComponent();
-            item = itemReceived;
-            populatePage(itemReceived);
-            itemsList.Clear();
+            item = itemReceived; //making the item passed to this page global so it can be access by all the methods
+            populatePage(item); //using the item to populate the page's fields
+            itemsList.Clear();  //clearing the global list that will hold the info returned by the API
 
         }
 
