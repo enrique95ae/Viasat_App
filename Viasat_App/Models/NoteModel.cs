@@ -19,8 +19,8 @@ namespace NoteType
         [JsonProperty("note")]
         public string note { get; set; }
 
-        [JsonProperty("belongs")]
-        public string belongs { get; set; }
+        [JsonProperty("belongs_to")]
+        public string belongs_to { get; set; }
 
         [JsonProperty("date")]
         public string date { get; set; }

@@ -155,21 +155,68 @@
                                     
                                 <TableSection>
                                     <ViewCell>  
-                                        <ListView x:Name="notesListview" ItemSelected="noteTapped" HeightRequest="100">
+                                        <ListView Margin="2" HasUnevenRows="true" x:Name="notesListView" ItemTapped="noteTapped" HeightRequest="100">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <ViewCell.View>
-                                                            <Label 
-                                                                x:Name="componentLabel"
-                                                                Text="{Binding .}"
-                                                                HorizontalOptions="Center"
-                                                            />
-                                                        </ViewCell.View>
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>>
-                                        </ListView>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="3*"/>
+                                                                    <ColumnDefinition Width="6*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                    </Grid.RowDefinitions>
+                                                            
+                                                                    <Label
+                                                                        x:Name="commentTitleLabel"
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="0"
+                                                                        HorizontalOptions="Start"
+                                                                        VerticalOptions="Center"
+                                                                        TextColor="#009FE3"
+                                                                        Text="{Binding _id}"
+                                                                        Margin="3"
+                                                                        />
+                                                                
+                                                                    <Label
+                                                                        x:Name="commentDescriptionLabel"
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="1"
+                                                                        HorizontalOptions="StartAndExpand"
+                                                                        VerticalOptions="Center"
+                                                                        Text="{Binding note}"
+                                                                        />
+                                                                
+                                                                    <Label
+                                                                        x:Name="commentAuthorLabel"
+                                                                        Grid.Row="1"
+                                                                        Grid.Column="0"
+                                                                        HorizontalOptions="Start"
+                                                                        VerticalOptions="Center"
+                                                                        FontAttributes="Bold"
+                                                                        Text="{Binding author_id}"
+                                                                        Margin="3"
+                                                                        />
+                                                                
+                                                                    <Label
+                                                                        x:Name="commentDateLabel"
+                                                                        Grid.Row="1"
+                                                                        Grid.Column="1"
+                                                                        HorizontalOptions="End"
+                                                                        VerticalOptions="Center"
+                                                                        FontAttributes="Bold"
+                                                                        Text="{Binding date}"
+                                                                        Margin="3"
+                                                                        />
+                                                                </Grid>
+                                                            </ViewCell.View>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
                                     </ViewCell>
                                 </TableSection>
                         

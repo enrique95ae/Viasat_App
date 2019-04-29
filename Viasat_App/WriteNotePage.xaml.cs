@@ -34,32 +34,32 @@ namespace Viasat_App
 
             if(endpoint.Contains("/addnoteitem"))
             {
-                newNote.belongs = Globals.TheUser._id;
+                newNote.belongs_to = Globals.TheUser._id;
             }
             else if(endpoint.Contains("/addnoteuser"))
             {
-                newNote.belongs = belongsTo_itemId;
+                newNote.belongs_to = belongsTo_itemId;
             }
             else
             {
                 //who cares about this impossible scenario?
             }
 
+            var jsonString = JsonConvert.SerializeObject(newNote,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+
+            requestString = jsonString;
+
             using (var httpClient = new HttpClient())
             {
                 var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
 
                 await httpClient.PostAsync(endpoint, httpContent);
-                //var httpResponse = await httpClient.PostAsync(endpoint, httpContent);
-
-                //if(httpResponse.Content != null)
-                //{
-                //    var responseContent = await httpResponse.Content.ReadAsStringAsync();
-                //    responseString = responseContent;
-                //}
-            }
-
-            
+            }    
         }
     }
 }

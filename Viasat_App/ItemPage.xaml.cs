@@ -19,6 +19,7 @@ namespace Viasat_App
         public ObservableCollection<string> componentsList = new ObservableCollection<string>(); //holds the components' IDs for this item
         public ObservableCollection<NoteModel> notesList = new ObservableCollection<NoteModel>(); //holds the notes' IDs written about this item
 
+
         public ItemModel item; //item to be used throughout the page
 
         public string requestString; //will hold the json string to be sent to the API
@@ -31,6 +32,7 @@ namespace Viasat_App
             item = itemReceived; //making the item passed to this page global so it can be access by all the methods
             populatePage(item); //using the item to populate the page's fields
             itemsList.Clear();  //clearing the global list that will hold the info returned by the API
+            populateList();
 
         }
 
@@ -104,12 +106,10 @@ namespace Viasat_App
         //populating the GUI with the received item's data.
         private void populatePage(ItemModel itemReceived)
         {
-            //itemTitleLabel.Text = item.id;
             itemNumberLabel.Text = item.item_number.ToString();
             itemDescriptionLabel.Text = item.description;
             itemRevisionLabel.Text = item.revision.ToString();
             itemPartTypeLabel.Text = item.part_type;
-            //itemComponentsLabel.Text = itemReceived.componentsIDs;
             componentsListview.ItemsSource = item.componentsIDs;
             componentsList = item.componentsIDs;
 
@@ -124,5 +124,36 @@ namespace Viasat_App
             }
         }
 
+        //populating the list of notes
+        private void populateList()
+        {
+            notesList = new ObservableCollection<NoteModel>()
+            {
+                new NoteModel()
+                {
+                    note = "comment1title",
+                    belongs_to = "",
+                    date = "02/19/2019",
+                    author_id = "Author1"
+                },
+
+                new NoteModel()
+                {
+                    note = "comment2title",
+                    belongs_to = "",
+                    date = "02/19/2019",
+                    author_id = "Author2"
+                },
+
+                new NoteModel()
+                {
+                    note = "comment2title",
+                    belongs_to = "",
+                    date = "02/19/2019",
+                    author_id = "Author2"
+                },
+            };
+            notesListView.ItemsSource = notesList;
+        }
     }
 }

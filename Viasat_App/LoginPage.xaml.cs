@@ -28,8 +28,9 @@ namespace Viasat_App
 
 
 
-            globals.Globals.TheUser.name = "John";
-            globals.Globals.TheUser.lastName = "Smith";
+            globals.Globals.TheUser.name = "Forrest";
+            globals.Globals.TheUser.lastName = "Joy";
+            globals.Globals.TheUser._id = "000000000000000000000002";
             globals.Globals.TheUser.permission_level = 9;
 
             globals.Globals.TheUser.recently_viewed = new System.Collections.ObjectModel.ObservableCollection<string>();
