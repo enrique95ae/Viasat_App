@@ -39,7 +39,7 @@ namespace Viasat_App
             await Navigation.PushAsync(new CommentsPage());
         }
 
-        private async void componentTapped(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        private async void componentTapped(object sender, SelectedItemChangedEventArgs e)
         {
             itemsList.Clear();
             for (int i = 0; i < item.componentsIDs.Count(); i++)
