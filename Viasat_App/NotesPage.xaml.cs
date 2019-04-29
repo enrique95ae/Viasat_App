@@ -14,10 +14,15 @@ namespace Viasat_App
     {
 
         public ObservableCollection<NoteModel> NoteList { set; get; }
+        string endpoint;
+        string Id;
 
-        public CommentsPage()
+
+        public CommentsPage(string endpointReceived, string idReceived)
         {
             InitializeComponent();
+            endpoint = endpointReceived;
+            Id = idReceived;
             populateList();
         }
 
@@ -30,7 +35,7 @@ namespace Viasat_App
 
         private async void newNoteButton_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new WriteNotePage());
+            await Navigation.PushAsync(new WriteNotePage(endpoint, Id));
         }
 
         private void populateList()
@@ -40,7 +45,7 @@ namespace Viasat_App
                 new NoteModel()
                 {
                     note = "comment1title",
-                    in_item = "",
+                    belongs = "",
                     date = "02/19/2019",
                     author_id = "Author1"
                 },
@@ -48,7 +53,7 @@ namespace Viasat_App
                 new NoteModel()
                 {
                     note = "comment2title",
-                    in_item = "",
+                    belongs = "",
                     date = "02/19/2019",
                     author_id = "Author2"
                 },
@@ -56,7 +61,7 @@ namespace Viasat_App
                 new NoteModel()
                 {
                     note = "comment2title",
-                    in_item = "",
+                    belongs = "",
                     date = "02/19/2019",
                     author_id = "Author2"
                 },

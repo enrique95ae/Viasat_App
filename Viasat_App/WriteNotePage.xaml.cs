@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using NoteType;
 using globals;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Text;
 
 using Xamarin.Forms;
 
@@ -13,6 +16,9 @@ namespace Viasat_App
         string endpoint;
         string belongsTo_itemId;
 
+        string requestString;
+        string responseString;
+
         public WriteNotePage(string endpointReceived, string itemId)
         {
             InitializeComponent();
@@ -20,7 +26,7 @@ namespace Viasat_App
             belongsTo_itemId = itemId;
         }
 
-        void OnSaveButtonClicked(object sender, EventArgs e)
+        private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             newNote.author = Globals.TheUser.name;
             newNote.author_id = Globals.TheUser._id;
@@ -34,7 +40,26 @@ namespace Viasat_App
             {
                 newNote.belongs = belongsTo_itemId;
             }
-        }
+            else
+            {
+                //who cares about this impossible scenario?
+            }
 
+            using (var httpClient = new HttpClient())
+            {
+                var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                await httpClient.PostAsync(endpoint, httpContent);
+                //var httpResponse = await httpClient.PostAsync(endpoint, httpContent);
+
+                //if(httpResponse.Content != null)
+                //{
+                //    var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                //    responseString = responseContent;
+                //}
+            }
+
+            
+        }
     }
 }

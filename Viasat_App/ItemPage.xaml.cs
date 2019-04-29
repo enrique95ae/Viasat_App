@@ -36,7 +36,8 @@ namespace Viasat_App
 
         private async void noteTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CommentsPage());
+            string endpoint = "http://52.13.18.254:3000/addnoteitem";
+            await Navigation.PushAsync(new CommentsPage(endpoint, item.id));
         }
 
         private async void componentTapped(object sender, SelectedItemChangedEventArgs e)
