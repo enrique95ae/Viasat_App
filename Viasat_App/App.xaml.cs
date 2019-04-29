@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
+using ItemType;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Viasat_App
@@ -10,7 +12,7 @@ namespace Viasat_App
         public App()
         {
             InitializeComponent();
-            globals.Globals.recentlyViewedList = new System.Collections.Generic.List<ItemType.ItemModel>();
+            globals.Globals.recentlyViewedList = new ObservableCollection<ItemModel>();
             globals.Globals.TheUser = new UserType.UserModel();
 
             MainPage = new NavigationPage(new LoginPage());

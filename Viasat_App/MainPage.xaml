@@ -81,7 +81,7 @@
             
             <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                 x:Name="favouritesButton"
-                Text="Favourites"
+                Text="Favorites"
                 TextColor="White"
                 FontSize="30"
                 FontAttributes="Bold"

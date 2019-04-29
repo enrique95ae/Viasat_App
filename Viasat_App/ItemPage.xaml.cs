@@ -12,11 +12,11 @@ namespace Viasat_App
 {
     public partial class ItemPage : ContentPage
     {
-        public List<string> componentsList = new List<string>();
+        public ObservableCollection<string> componentsList = new ObservableCollection<string>();
         public string requestString;
         public string responseString;
         public ItemModel item;
-        public List<ItemModel> itemsList = new List<ItemModel>();
+        public ObservableCollection<ItemModel> itemsList = new ObservableCollection<ItemModel>();
  
         public ItemPage(ItemModel itemReceived)
         {
@@ -65,7 +65,7 @@ namespace Viasat_App
                     }
                 }
 
-                var itemInArray = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+                var itemInArray = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
                 var itemReceived = itemInArray[0];
 
                 itemsList.Add(itemReceived);

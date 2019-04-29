@@ -17,7 +17,7 @@ namespace Viasat_App
         public string requestString;
         public string responseString;
 
-        public ResultsPage(List<ItemModel> itemList)
+        public ResultsPage(ObservableCollection<ItemModel> itemList)
         {
             InitializeComponent();
             ResultsListView.ItemsSource = itemList;
@@ -74,7 +74,7 @@ namespace Viasat_App
                 }
             }
 
-            var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+            var itemsList = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
             var itemReceived = itemsList[0];
 
             globals.Globals.recentlyViewedList.Add(itemReceived);

@@ -76,7 +76,7 @@ namespace Viasat_App
 
             //parsing from json string to a list of objects of our item model type
 
-            var itemsList = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+            var itemsList = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
 
             //reset the parameters list for a future serch
             parametersList.Clear();

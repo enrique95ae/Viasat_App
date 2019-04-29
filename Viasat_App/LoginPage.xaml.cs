@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UserType;
 using ItemType;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
 
@@ -33,8 +34,8 @@ namespace Viasat_App
 
             globals.Globals.TheUser.recently_viewed = new System.Collections.ObjectModel.ObservableCollection<string>();
 
-            globals.Globals.favoritesList = new List<string>();
-            globals.Globals.favoritesItemsList = new List<ItemModel>();
+            globals.Globals.favoritesList = new ObservableCollection<string>();
+            globals.Globals.favoritesItemsList = new ObservableCollection<ItemModel>();
 
 
 

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ItemType
 {
@@ -29,7 +30,7 @@ namespace ItemType
 
         //so each id can be displayed in one cell of a list view and can be clicked
         [JsonProperty("components")]
-        public List<string> componentsIDs { get; set; }
+        public ObservableCollection<string> componentsIDs { get; set; }
     }
 
 }

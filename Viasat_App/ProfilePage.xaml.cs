@@ -18,7 +18,7 @@ namespace Viasat_App
         //ItemModel item = new ItemModel();
         public string responseString;
         public string requestString;
-        public List<ItemModel> favoritesList = new List<ItemModel>();
+        public ObservableCollection<ItemModel> favoritesList = new ObservableCollection<ItemModel>();
 
 
         public ProfilePage(UserModel theUser)
@@ -81,7 +81,7 @@ namespace Viasat_App
                 }
 
 
-                List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+                ObservableCollection<ItemModel> tempItem2 = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
                 //historyList.Add(tempItem2[0]);
                
             }
