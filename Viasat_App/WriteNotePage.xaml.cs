@@ -32,11 +32,11 @@ namespace Viasat_App
             newNote.author_id = Globals.TheUser._id;
             newNote.note = textEditor.Text;
 
-            if(endpoint.Contains("/addnoteitem"))
+            if(endpoint.Contains("/addnoteuser"))
             {
                 newNote.belongs_to = Globals.TheUser._id;
             }
-            else if(endpoint.Contains("/addnoteuser"))
+            else if(endpoint.Contains("/addnoteitem"))
             {
                 newNote.belongs_to = belongsTo_itemId;
             }

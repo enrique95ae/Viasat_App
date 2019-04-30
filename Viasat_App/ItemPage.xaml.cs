@@ -34,7 +34,8 @@ namespace Viasat_App
             item = itemReceived; //making the item passed to this page global so it can be access by all the methods
             populatePage(item); //using the item to populate the page's fields
             itemsList.Clear();  //clearing the global list that will hold the info returned by the API
-            populateList();
+            //populateList();
+            populateNotesList(item.id);
 
         }
 
@@ -162,35 +163,42 @@ namespace Viasat_App
             }
         }
 
-        //populating the list of notes
-        private void populateList()
+        private async void populateNotesList(string itemId)
         {
-            notesList = new ObservableCollection<NoteModel>()
+            NoteModel requestNote = new NoteModel();
+
+            requestNote.belongs_to = itemId;
+
+            var jsonString = JsonConvert.SerializeObject(requestNote,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+
+            requestString = jsonString;
+
+            using (var httpClient = new HttpClient())
             {
-                new NoteModel()
-                {
-                    note = "comment1title",
-                    belongs_to = "",
-                    date = "02/19/2019",
-                    author_id = "Author1"
-                },
+                var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
 
-                new NoteModel()
-                {
-                    note = "comment2title",
-                    belongs_to = "",
-                    date = "02/19/2019",
-                    author_id = "Author2"
-                },
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/getnotes", httpContent);
 
-                new NoteModel()
+                if(httpResponse.Content != null)
                 {
-                    note = "comment2title",
-                    belongs_to = "",
-                    date = "02/19/2019",
-                    author_id = "Author2"
-                },
-            };
+                    var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                    responseString = responseContent;
+
+                    //debugging
+                    Console.WriteLine("JSON: " + requestString);
+                    Console.WriteLine("POST: " + httpContent.ToString());
+                    Console.WriteLine("GET: " + responseContent);
+                }
+            }
+            var notesInArray = JsonConvert.DeserializeObject<ObservableCollection<NoteModel>>(responseString);
+
+
+            notesList = notesInArray;
             notesListView.ItemsSource = notesList;
         }
     }
