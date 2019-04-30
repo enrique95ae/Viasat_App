@@ -25,15 +25,7 @@ namespace Viasat_App
             InitializeComponent();
             demoUsers.Add("000000000000000000000002");
 
-
-
-            //globals.Globals.TheUser.name = "Forrest";
-            //globals.Globals.TheUser.lastName = "Joy";
-            //globals.Globals.TheUser._id = "000000000000000000000002";
-            //globals.Globals.TheUser.permission_level = 9;
-
-            globals.Globals.TheUser.recently_viewed = new System.Collections.ObjectModel.ObservableCollection<string>();
-
+            globals.Globals.TheUser.recently_viewed = new ObservableCollection<string>();
             globals.Globals.favoritesList = new ObservableCollection<string>();
             globals.Globals.favoritesItemsList = new ObservableCollection<ItemModel>();
 

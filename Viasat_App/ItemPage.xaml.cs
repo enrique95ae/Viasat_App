@@ -109,9 +109,9 @@ namespace Viasat_App
             requestString = jsonString;
 
 
-                if (!globals.Globals.favoritesList.Contains(item.id))
+                if (!globals.Globals.TheUser.favorites.Contains(item.id))
                 {
-                    globals.Globals.favoritesList.Add(item.id);
+                    globals.Globals.TheUser.favorites.Add(item.id);
                     favButton.Source = "FavImg.png";
 
                     using (var httpClient = new HttpClient())
@@ -129,7 +129,7 @@ namespace Viasat_App
                 }
                 else
                 {
-                    globals.Globals.favoritesList.Remove(item.id);
+                    globals.Globals.TheUser.favorites.Remove(item.id);
                     favButton.Source = "noFavImg.png";
 
                     using (var httpClient = new HttpClient())
@@ -152,7 +152,7 @@ namespace Viasat_App
             componentsList = item.componentsIDs;
 
             //set the favorite button depending if the item is already in the favorites list.
-            if (globals.Globals.favoritesList.Contains(item.id))
+            if (globals.Globals.TheUser.favorites.Contains(item.id))
             {
                 favButton.Source = "FavImg.png";
             }

@@ -21,6 +21,7 @@ namespace Viasat_App
         {
             theUser = user;
             InitializeComponent();
+            fillFavList();
         }
 
         //START: BUTTONS EVENTS ########################################################
@@ -43,7 +44,7 @@ namespace Viasat_App
         private async void favoritesButton_Clicked(object sender, System.EventArgs e)
         {
             globals.Globals.favoritesItemsList.Clear();
-            foreach (string itemId in globals.Globals.favoritesList)
+            foreach (string itemId in globals.Globals.TheUser.favorites)
             {
                 ItemModel tempItem = new ItemModel();
                 tempItem.id = itemId;
@@ -76,17 +77,37 @@ namespace Viasat_App
 
         //END: BUTTONS EVENTS ##########################################################
 
-
-        //PAGE ALGORITHM:
-        /*
-         * 1- Page receives the username from the login page (if this page it's pushed onto the pages stack it means auth was successful)
-         * 2- Page sends username and requests said username's AccessLevel
-         * 3- Page receives the user's Access level and sets the global variable to that value.
-         */
-
-        private void SetUserAccessLevel()
+        private async void fillFavList()
         {
-            //code here
+            //globals.Globals.favoritesItemsList.Clear();
+            //foreach (string itemId in globals.Globals.TheUser.favorites)
+            //{
+            //    ItemModel tempItem = new ItemModel();
+            //    tempItem.id = itemId;
+
+            //    var jsonString = JsonConvert.SerializeObject(tempItem,
+            //                    Newtonsoft.Json.Formatting.None,
+            //                    new JsonSerializerSettings
+            //                    {
+            //                        NullValueHandling = NullValueHandling.Ignore
+            //                    });
+
+            //    requestString = jsonString.ToLower();
+
+            //    using (var httpClient = new HttpClient())
+            //    {
+            //        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+            //        var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
+            //        if (httpResponse.Content != null)
+            //        {
+            //            var responseContent = await httpResponse.Content.ReadAsStringAsync();
+            //            responseString = responseContent;
+            //        }
+            //    }
+
+            //    List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
+            //    globals.Globals.favoritesItemsList.Add(tempItem2[0]);
+            //}
         }
 
     }
