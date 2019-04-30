@@ -10,8 +10,8 @@
     {
         public static UserModel TheUser { get; set; }
         public static ObservableCollection<ItemModel> recentlyViewedList { get; set; }
-        public static ObservableCollection<string> favoritesList { get; set; }
-        public static ObservableCollection<ItemModel> favoritesItemsList { get; set; }
+        public static ObservableCollection<string> favoritesList { get; set; } //ids
+        public static ObservableCollection<ItemModel> favoritesItemsList { get; set; } //whole objects
     }
 
 }

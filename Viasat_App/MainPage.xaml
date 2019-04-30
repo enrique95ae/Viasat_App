@@ -94,7 +94,7 @@
             
             <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                 x:Name="commentsButton"
-                Text="Comments"
+                Text="Notes"
                 TextColor="White"
                 FontSize="30"
                 FontAttributes="Bold"

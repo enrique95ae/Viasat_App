@@ -20,7 +20,8 @@ namespace Viasat_App
         public ResultsPage(ObservableCollection<ItemModel> itemList)
         {
             InitializeComponent();
-            ResultsListView.ItemsSource = itemList;
+                ResultsListView.ItemsSource = itemList;
+
         } 
 
         //START: BUTTONS EVENTS #######################################################

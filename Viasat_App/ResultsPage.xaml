@@ -11,7 +11,7 @@
         
         <StackLayout>
                    
-            <ListView Margin="2" HasUnevenRows="true" x:Name="ResultsListView" ItemTapped="itemEntry_Tapped">
+            <ListView Margin="2" HasUnevenRows="true" x:Name="ResultsListView" ItemTapped="itemEntry_Tapped" IsPullToRefreshEnabled="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

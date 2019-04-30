@@ -9,10 +9,10 @@ namespace UserType
         [JsonProperty("_id")]
         public string _id { get; set; }
 
-        [JsonProperty("user_name")]
+        [JsonProperty("firest_name")]
         public string name { get; set; }
 
-        [JsonProperty("user_last")]
+        [JsonProperty("last_name")]
         public string lastName { get; set; }
 
         [JsonProperty("permission_level")]

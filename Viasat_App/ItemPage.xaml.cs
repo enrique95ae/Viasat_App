@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
 using NoteType;
+using favType;
+
 
 namespace Viasat_App
 {
@@ -89,18 +91,54 @@ namespace Viasat_App
             await Navigation.PushAsync(new InfoPage());
         }
 
-        private void favButton_Clicked(object sender, System.EventArgs e)
+        private async void favButton_Clicked(object sender, System.EventArgs e)
         {
-            if (!globals.Globals.favoritesList.Contains(item.id))
-            {
-                globals.Globals.favoritesList.Add(item.id);
-                favButton.Source = "FavImg.png";
-            }
-            else
-            {
-                globals.Globals.favoritesList.Remove(item.id);
-                favButton.Source = "noFavImg.png";
-            }
+            
+            FavModel tempFav = new FavModel();
+
+            tempFav.id = globals.Globals.TheUser._id;
+            tempFav.item_id = item.id;
+
+            var jsonString = JsonConvert.SerializeObject(tempFav,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+
+            requestString = jsonString;
+
+
+                if (!globals.Globals.favoritesList.Contains(item.id))
+                {
+                    globals.Globals.favoritesList.Add(item.id);
+                    favButton.Source = "FavImg.png";
+
+                    using (var httpClient = new HttpClient())
+                    {
+                        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                        await httpClient.PostAsync("http://52.13.18.254:3000/addfavorite", httpContent);
+
+                    //debugging
+                    Console.WriteLine("JSON: " + requestString);
+                    Console.WriteLine("POST: " + httpContent.ToString());
+                    //Console.WriteLine("GET: " + responseContent);
+                }
+
+                }
+                else
+                {
+                    globals.Globals.favoritesList.Remove(item.id);
+                    favButton.Source = "noFavImg.png";
+
+                    using (var httpClient = new HttpClient())
+                    {
+                        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                        await httpClient.PostAsync("http://52.13.18.254:3000/removefavorite", httpContent);
+                    }
+                }
         }
 
         //populating the GUI with the received item's data.
