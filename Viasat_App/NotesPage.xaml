@@ -11,7 +11,7 @@
         
         <StackLayout>
 
-            <ListView Margin="2" HasUnevenRows="true" x:Name="CommentsListView" ItemTapped="commentEntry_Tapped">
+            <ListView Margin="2" HasUnevenRows="true" x:Name="CommentsListView" ItemTapped="noteEntry_Tapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -27,18 +27,18 @@
                                         </Grid.RowDefinitions>
                                 
                                         <Label
-                                            x:Name="commentTitleLabel"
+                                            x:Name="noteAuthorLabel"
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Center"
                                             TextColor="#009FE3"
-                                            Text="{Binding _id}"
+                                            Text="{Binding author}"
                                             Margin="3"
                                             />
                                     
                                         <Label
-                                            x:Name="commentDescriptionLabel"
+                                            x:Name="noteDescriptionLabel"
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="StartAndExpand"
@@ -47,18 +47,7 @@
                                             />
                                     
                                         <Label
-                                            x:Name="commentAuthorLabel"
-                                            Grid.Row="1"
-                                            Grid.Column="0"
-                                            HorizontalOptions="Start"
-                                            VerticalOptions="Center"
-                                            FontAttributes="Bold"
-                                            Text="{Binding author_id}"
-                                            Margin="3"
-                                            />
-                                    
-                                        <Label
-                                            x:Name="commentDateLabel"
+                                            x:Name="noteDateLabel"
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             HorizontalOptions="End"

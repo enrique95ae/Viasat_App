@@ -145,10 +145,11 @@
 
                                 <TableSection>
                                     <ViewCell>
-                                        <Label
+                                        <Button
                                             Text="Notes:"
                                             FontAttributes="Bold"
                                             TextColor="#009FE3"
+                                            Clicked="notesButton_Clicked"
                                         />
                                     </ViewCell>
                                 </TableSection>

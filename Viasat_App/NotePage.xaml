@@ -9,29 +9,45 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 
-                
                 <Label
+                    x:Name="blank"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="Test"
-                    />
+                    Grid.ColumnSpan="2"  
+                    Text=""
+                />
+                
+                <Label
+                    x:Name="noteLabel"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                />
+                
+                <Label
+                    x:Name="authorLabel"
+                    Grid.Row="2"
+                    Grid.Column="0" 
+                    TextColor="#009FE3"
+                />
+                
+                <Label
+                    x:Name="dateLabel"
+                    Grid.Row="2"
+                    Grid.Column="1"  
+                    FontAttributes="Bold"
+                />
                 
                 </Grid>      
-
-            <Grid>
-                
-                </Grid>
-        
         </StackLayout>
-        
-        
-        
     </ContentPage.Content>
 </ContentPage>

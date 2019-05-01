@@ -41,8 +41,7 @@ namespace Viasat_App
 
         private async void noteTapped(object sender, EventArgs e)
         {
-            string endpoint = "http://52.13.18.254:3000/addnoteitem";
-            await Navigation.PushAsync(new CommentsPage(endpoint, item.id));
+            await Navigation.PushAsync(new CommentsPage(item.id, notesList));
         }
 
         private async void componentTapped(object sender, SelectedItemChangedEventArgs e)
@@ -163,6 +162,11 @@ namespace Viasat_App
             }
         }
 
+        private async void notesButton_Clicked(object sender, EventArgs e)
+        {
+            //
+        }
+
         private async void populateNotesList(string itemId)
         {
             NoteModel requestNote = new NoteModel();
@@ -196,7 +200,6 @@ namespace Viasat_App
                 }
             }
             var notesInArray = JsonConvert.DeserializeObject<ObservableCollection<NoteModel>>(responseString);
-
 
             notesList = notesInArray;
             notesListView.ItemsSource = notesList;
