@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
+/*
+ * Model of a basic item as found in the database.
+ * Each attribute is preceeded by a jsonProperty that defines how each attribute is called in the json string being sent/received
+ */
 
 namespace ItemType
 {
-
     public class ItemModel
     {
         [JsonProperty("_id")]
@@ -22,13 +25,9 @@ namespace ItemType
         [JsonProperty("permission_level")]
         public int? permission_level { get; set; }
 
-        //[JsonProperty("components")]
-        //public string components { get; set; }
-
         [JsonProperty("revision")]
         public int? revision { get; set; }
 
-        //so each id can be displayed in one cell of a list view and can be clicked
         [JsonProperty("components")]
         public ObservableCollection<string> componentsIDs { get; set; }
     }

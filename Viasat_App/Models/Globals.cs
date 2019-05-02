@@ -1,10 +1,13 @@
-﻿namespace globals
+﻿using UserType;
+using ItemType;
+using System.Collections.ObjectModel;
+
+namespace globals
 {
-    using Xamarin.Forms;
-    using UserType;
-    using ItemType;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
+    /*
+     *  This file contains all the global variables used throught the app
+     *  All this lists are filled upon successful login
+     */
 
     public class Globals
     {
