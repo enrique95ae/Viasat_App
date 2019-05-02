@@ -34,14 +34,14 @@ namespace Viasat_App
             item = itemReceived; //making the item passed to this page global so it can be access by all the methods
             populatePage(item); //using the item to populate the page's fields
             itemsList.Clear();  //clearing the global list that will hold the info returned by the API
-            //populateList();
             populateNotesList(item.id);
 
         }
 
         private async void noteTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CommentsPage(item.id, notesList));
+            string endpoint = "http://52.13.18.254:3000/addnoteitem";
+            await Navigation.PushAsync(new CommentsPage(item.id, notesList, endpoint));
         }
 
         private async void componentTapped(object sender, SelectedItemChangedEventArgs e)
@@ -49,7 +49,6 @@ namespace Viasat_App
             itemsList.Clear();
             for (int i = 0; i < item.componentsIDs.Count(); i++)
             {
-                //string itemNum = item.componentsIDs[i];
                 int itemNum = Int32.Parse(item.componentsIDs[i]);
                 ItemModel tempItem = new ItemModel();
                 tempItem.item_number = itemNum;
@@ -82,7 +81,6 @@ namespace Viasat_App
 
                 itemsList.Add(itemReceived);
             }
-            //await Navigation.PushAsync(new ComponentsPage(componentsList));
             await Navigation.PushAsync(new ResultsPage(itemsList));
         }
 
@@ -123,7 +121,6 @@ namespace Viasat_App
                     //debugging
                     Console.WriteLine("JSON: " + requestString);
                     Console.WriteLine("POST: " + httpContent.ToString());
-                    //Console.WriteLine("GET: " + responseContent);
                 }
 
                 }
@@ -164,7 +161,8 @@ namespace Viasat_App
 
         private async void notesButton_Clicked(object sender, EventArgs e)
         {
-            //
+            string endpoint = "http://52.13.18.254:3000/addnoteitem";
+            await Navigation.PushAsync(new CommentsPage(item.id, notesList, endpoint));
         }
 
         private async void populateNotesList(string itemId)

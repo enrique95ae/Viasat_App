@@ -9,13 +9,15 @@ namespace Viasat_App
     public partial class CommentsPage : ContentPage
     {
         public ObservableCollection<NoteModel> NoteList { set; get; }
-        string endpoint = "http://52.13.18.254:3000/addnoteitem";
+        string endpoint;
         string theId;
 
-
-        public CommentsPage(string idReceived, ObservableCollection<NoteModel> notes)
+        //PARAMETER 1: the id (user or item) that will be used in case of clicking the write new note button. (So the new note belongs to either the user or item)
+        //PARAMETER 2: the array of notes to populate the list
+        //PARAMETER 3: the endpoint to be called (depending on if the note will be personal or for an item)
+        public CommentsPage(string idReceived, ObservableCollection<NoteModel> notes, string endpointToUse)
         {
-
+            endpoint = endpointToUse;
             InitializeComponent();
             NoteList = notes;
             CommentsListView.ItemsSource = NoteList;

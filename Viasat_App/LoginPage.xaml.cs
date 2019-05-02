@@ -23,14 +23,17 @@ namespace Viasat_App
         public LoginPage()
         {
             InitializeComponent();
+            demoUsers.Add("000000000000000000000001");
             demoUsers.Add("000000000000000000000002");
+            demoUsers.Add("000000000000000000000003");
+            demoUsers.Add("000000000000000000000004");
+            demoUsers.Add("000000000000000000000005");
+            demoUsers.Add("000000000000000000000006");
+            demoUsers.Add("000000000000000000000007");
 
             globals.Globals.TheUser.recently_viewed = new ObservableCollection<string>();
             globals.Globals.favoritesList = new ObservableCollection<string>();
             globals.Globals.favoritesItemsList = new ObservableCollection<ItemModel>();
-
-
-
         }
 
         private async void loginButton_Clicked(object sender, EventArgs e)
@@ -66,7 +69,6 @@ namespace Viasat_App
 
             await Navigation.PushAsync(new MainPage(globals.Globals.TheUser));
         }
-
 
         public void createRequest(string userID)
         {

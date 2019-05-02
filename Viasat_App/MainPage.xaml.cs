@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using UserType;
-using ItemType;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Collections.ObjectModel;
+
+using UserType;
+using ItemType;
+using NoteType;
 
 namespace Viasat_App
 {
@@ -16,12 +17,12 @@ namespace Viasat_App
         UserModel theUser;
         public string responseString;
         public string requestString;
+        ObservableCollection<NoteModel> notesList = new ObservableCollection<NoteModel>();
 
         public MainPage(UserModel user)
         {
             theUser = user;
             InitializeComponent();
-            fillFavList();
         }
 
         //START: BUTTONS EVENTS ########################################################
@@ -38,6 +39,53 @@ namespace Viasat_App
 
         private async void historyButton_Clicked(object sender, System.EventArgs e)
         {
+            for (int i = 0; i < theUser.recently_viewed.Count; i++)
+            {
+                string itemId = theUser.recently_viewed[i];
+                ItemModel tempItem = new ItemModel();
+                tempItem.id = itemId;
+
+                var jsonString = JsonConvert.SerializeObject(tempItem,
+                                Newtonsoft.Json.Formatting.None,
+                                new JsonSerializerSettings
+                                {
+                                    NullValueHandling = NullValueHandling.Ignore
+                                });
+
+                requestString = jsonString.ToLower();
+
+                using (var httpClient = new HttpClient())
+                {
+                    var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                    var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
+
+                    if (httpResponse.Content != null)
+                    {
+                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
+
+                        Console.WriteLine("JSON: " + requestString.ToString());
+                        Console.WriteLine("POST: " + httpContent.ToString());
+                        Console.WriteLine("GET: " + responseContent);
+
+                        responseString = responseContent;
+                    }
+                }
+
+
+                ObservableCollection<ItemModel> tempItem2 = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
+                ItemModel itemViewed = new ItemModel();
+
+                if (tempItem2.Count > 0)
+                {
+                    itemViewed = tempItem2[0];
+                    globals.Globals.recentlyViewedList.Add(itemViewed);
+                }
+
+
+
+            }
+
             await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList));
         }
 
@@ -75,40 +123,46 @@ namespace Viasat_App
             await Navigation.PushAsync(new ResultsPage(globals.Globals.favoritesItemsList));
         }
 
-        //END: BUTTONS EVENTS ##########################################################
-
-        private async void fillFavList()
+        private async void personalNotesButton_Clicked(object sender, System.EventArgs e)
         {
-            //globals.Globals.favoritesItemsList.Clear();
-            //foreach (string itemId in globals.Globals.TheUser.favorites)
-            //{
-            //    ItemModel tempItem = new ItemModel();
-            //    tempItem.id = itemId;
+            notesList.Clear();
+            NoteModel requestNote = new NoteModel();
 
-            //    var jsonString = JsonConvert.SerializeObject(tempItem,
-            //                    Newtonsoft.Json.Formatting.None,
-            //                    new JsonSerializerSettings
-            //                    {
-            //                        NullValueHandling = NullValueHandling.Ignore
-            //                    });
+            requestNote.belongs_to = globals.Globals.TheUser._id;
 
-            //    requestString = jsonString.ToLower();
+            var jsonString = JsonConvert.SerializeObject(requestNote,
+                            Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
 
-            //    using (var httpClient = new HttpClient())
-            //    {
-            //        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
-            //        var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
-            //        if (httpResponse.Content != null)
-            //        {
-            //            var responseContent = await httpResponse.Content.ReadAsStringAsync();
-            //            responseString = responseContent;
-            //        }
-            //    }
+            requestString = jsonString;
 
-            //    List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
-            //    globals.Globals.favoritesItemsList.Add(tempItem2[0]);
-            //}
+            using (var httpClient = new HttpClient())
+            {
+                var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/getnotes", httpContent);
+
+                if (httpResponse.Content != null)
+                {
+                    var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                    responseString = responseContent;
+
+                    //debugging
+                    Console.WriteLine("JSON: " + requestString);
+                    Console.WriteLine("POST: " + httpContent.ToString());
+                    Console.WriteLine("GET: " + responseContent);
+                }
+            }
+            var notesInArray = JsonConvert.DeserializeObject<ObservableCollection<NoteModel>>(responseString);
+
+            notesList = notesInArray;
+
+            string endpoint = "http://52.13.18.254:3000/addnoteuser";
+
+            await Navigation.PushAsync(new CommentsPage(globals.Globals.TheUser._id, notesList, endpoint));
         }
-
     }
 }

@@ -112,15 +112,16 @@
                                     </ViewCell>
                                 </TableSection>
                         
-                            <TableSection>
-                                <ViewCell>
-                                    <Label
-                                        Text="Components:"
-                                        FontAttributes="Bold"
-                                        TextColor="#009FE3"
-                                    />
-                                </ViewCell>
-                            </TableSection>
+                                <TableSection>
+                                    <ViewCell>
+                                        <Button
+                                            Text="Components:"
+                                            FontAttributes="Bold"
+                                            TextColor="#009FE3"
+                                            
+                                        />
+                                    </ViewCell>
+                                </TableSection>
                         
                              <TableSection>
                                 <ViewCell>
@@ -171,21 +172,12 @@
                                                                     <RowDefinition Height="*"/>
                                                                     </Grid.RowDefinitions>
                                                             
-                                                                    <Label
-                                                                        x:Name="commentTitleLabel"
-                                                                        Grid.Row="0"
-                                                                        Grid.Column="0"
-                                                                        HorizontalOptions="Start"
-                                                                        VerticalOptions="Center"
-                                                                        TextColor="#009FE3"
-                                                                        Text="{Binding _id}"
-                                                                        Margin="3"
-                                                                        />
                                                                 
                                                                     <Label
                                                                         x:Name="commentDescriptionLabel"
                                                                         Grid.Row="0"
                                                                         Grid.Column="1"
+                                                                        Grid.ColumnSpan="2"
                                                                         HorizontalOptions="StartAndExpand"
                                                                         VerticalOptions="Center"
                                                                         Text="{Binding note}"
@@ -198,7 +190,7 @@
                                                                         HorizontalOptions="Start"
                                                                         VerticalOptions="Center"
                                                                         FontAttributes="Bold"
-                                                                        Text="{Binding author_id}"
+                                                                        Text="{Binding author}"
                                                                         Margin="3"
                                                                         />
                                                                 

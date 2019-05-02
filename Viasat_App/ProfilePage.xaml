@@ -48,13 +48,19 @@
             />
         
         <Button
-            Text="Recent comments"
+            Text="Personal notes"
             TextColor="White"
             FontAttributes="Bold"
             BackgroundColor="#BED733"
-            
+            Clicked="personalNotesButton_Clicked"
             />
         
+        <Button
+            Text="Clear history"
+            TextColor="Red"
+            VerticalOptions="End"
+            Clicked="clearHistoryButton_Clicked"
+            />
         
 
         </StackLayout>

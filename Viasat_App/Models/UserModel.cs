@@ -9,7 +9,7 @@ namespace UserType
         [JsonProperty("_id")]
         public string _id { get; set; }
 
-        [JsonProperty("firest_name")]
+        [JsonProperty("first_name")]
         public string name { get; set; }
 
         [JsonProperty("last_name")]
@@ -26,8 +26,5 @@ namespace UserType
 
         [JsonProperty("favorites")]
         public ObservableCollection<string> favorites { get; set; }
-
-        //[JsonProperty("recent_comments")]
-       //public ObservableCollection<string> RecentComments { get; set; }
     }
 }

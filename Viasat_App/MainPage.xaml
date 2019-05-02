@@ -102,6 +102,7 @@
                 BackgroundColor="#BED733"
                 Margin ="0,3,0,3"
                 CornerRadius="10"
+                Clicked="personalNotesButton_Clicked"
                 />
             
         </Grid>      

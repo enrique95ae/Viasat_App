@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Net.Http;
 using ItemType;
+using favType;
 
 
 namespace Viasat_App
@@ -36,6 +37,7 @@ namespace Viasat_App
             ItemModel tempItem = new ItemModel();
             tempItem.id = itemId;
 
+
             //item serialized to be sent as the request to the API
             //handles parameters not entered by the user, that way they are not included in the json string so the API doesn't have to parse and check for nulls.
             var jsonString = JsonConvert.SerializeObject(tempItem,
@@ -56,6 +58,7 @@ namespace Viasat_App
                 //sending the previously created request to the api and waiting for a response that will be saved in the httpResponse var
                 //  NOTE: if the api's base url changes this has to be modified.
                 var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/searchbyid", httpContent);
+
 
                 //to visualize the json sent over the network comment the previous line, uncomment the next one and go to the link.
                 //var httpResponse = await httpClient.PostAsync("https://putsreq.com/qmumqAwIq9s5RBEfbNfh", httpContent);
@@ -78,7 +81,30 @@ namespace Viasat_App
             var itemsList = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
             var itemReceived = itemsList[0];
 
-            globals.Globals.recentlyViewedList.Add(itemReceived);
+            FavModel itemViewed = new FavModel();
+
+            itemViewed.id = globals.Globals.TheUser._id;
+            itemViewed.item_id = itemId;
+
+
+            jsonString = JsonConvert.SerializeObject(itemViewed,
+                Newtonsoft.Json.Formatting.None,
+                new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+            requestString = jsonString;
+
+            using (var httpClient = new HttpClient())
+            {
+                var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/itemviewed", httpContent);
+            }
+
+
+                globals.Globals.recentlyViewedList.Add(itemReceived);
 
             //calling the ItemPage into the stack and passing the selected item by the user
             await Navigation.PushAsync(new ItemPage(itemReceived));
