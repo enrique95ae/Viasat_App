@@ -82,7 +82,8 @@ namespace Viasat_App
                
             }
 
-            await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList));
+            string title = "Recently viewed";
+            await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList, title));
         }
 
         public async void favoritesButton_Clicked(object sender, System.EventArgs e)
@@ -116,7 +117,9 @@ namespace Viasat_App
                 List<ItemModel> tempItem2 = JsonConvert.DeserializeObject<List<ItemModel>>(responseString);
                 globals.Globals.favoritesItemsList.Add(tempItem2[0]);
             }
-            await Navigation.PushAsync(new ResultsPage(globals.Globals.favoritesItemsList));
+
+            string title = "Favorites:";
+            await Navigation.PushAsync(new ResultsPage(globals.Globals.favoritesItemsList, title));
         }
 
         private async void clearHistoryButton_Clicked(object sender, System.EventArgs e)

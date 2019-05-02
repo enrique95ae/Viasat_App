@@ -81,7 +81,8 @@ namespace Viasat_App
 
                 itemsList.Add(itemReceived);
             }
-            await Navigation.PushAsync(new ResultsPage(itemsList));
+            string title = "Components:";
+            await Navigation.PushAsync(new ResultsPage(itemsList, title));
         }
 
         private async void infoButton_Clicked(object sender, EventArgs e)

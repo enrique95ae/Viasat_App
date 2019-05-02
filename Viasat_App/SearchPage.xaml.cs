@@ -81,8 +81,9 @@ namespace Viasat_App
             //reset the parameters list for a future serch
             parametersList.Clear();
 
+            string title = "Search Results";
             //open the results page and pass the list of items to populate it
-            await Navigation.PushAsync(new ResultsPage(itemsList));
+            await Navigation.PushAsync(new ResultsPage(itemsList, title));
         }
 
         void addParameterButton_Clicked(object sender, System.EventArgs e)

@@ -18,11 +18,11 @@ namespace Viasat_App
         public string requestString;
         public string responseString;
 
-        public ResultsPage(ObservableCollection<ItemModel> itemList)
+        public ResultsPage(ObservableCollection<ItemModel> itemList, string title)
         {
             InitializeComponent();
                 ResultsListView.ItemsSource = itemList;
-
+            Title = title;
         } 
 
         //START: BUTTONS EVENTS #######################################################
