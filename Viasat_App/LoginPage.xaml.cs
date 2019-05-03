@@ -39,35 +39,43 @@ namespace Viasat_App
 
         private async void loginButton_Clicked(object sender, EventArgs e)
         {
-            if(demoUsers.Contains(usernameEntry.Text) && passwordEntry.Text == "1234") //demo auth
+            if(usernameEntry.Text == null || passwordEntry.Text == null)
             {
-                createRequest(usernameEntry.Text);
+                if (demoUsers.Contains(usernameEntry.Text) && passwordEntry.Text == "1234") //demo auth
+                {
+                    createRequest(usernameEntry.Text);
 
-                        using (var httpClient = new HttpClient())
+                    using (var httpClient = new HttpClient())
+                    {
+                        var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+
+                        var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/returnuser", httpContent);
+
+                        if (httpResponse.Content != null)
                         {
-                            var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+                            var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                            responseString = responseContent;
 
-                            var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/returnuser", httpContent);
-
-                            if(httpResponse.Content != null)
-                            {
-                                var responseContent = await httpResponse.Content.ReadAsStringAsync();
-                                responseString = responseContent;
-
-                                //debugging
-                                Console.WriteLine("JSON: " + requestString);
-                                Console.WriteLine("POST: " + httpContent.ToString());
-                                Console.WriteLine("GET: " + responseContent);
-                            }
+                            //debugging
+                            Console.WriteLine("JSON: " + requestString);
+                            Console.WriteLine("POST: " + httpContent.ToString());
+                            Console.WriteLine("GET: " + responseContent);
                         }
+                    }
+                }
+
+                userReceived = JsonConvert.DeserializeObject<ObservableCollection<UserModel>>(responseString);
+
+                globals.Globals.TheUser = userReceived[0];
+
+
+                await Navigation.PushAsync(new MainPage(globals.Globals.TheUser));
+            }
+            else
+            {
+                DisplayAlert("Error", "Please enter a valid combination.", "OK");
             }
 
-            userReceived = JsonConvert.DeserializeObject<ObservableCollection<UserModel>>(responseString);
-
-            globals.Globals.TheUser = userReceived[0];
-
-
-            await Navigation.PushAsync(new MainPage(globals.Globals.TheUser));
         }
 
         public void createRequest(string userID)
