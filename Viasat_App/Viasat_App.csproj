@@ -24,6 +24,7 @@
     <Compile Remove="ComponentsPage.xaml.cs" />
     <Compile Remove="ComponentsPage.xaml.cs" />
     <Compile Remove="InfoPage.xaml.cs" />
+    <Compile Remove="InfoPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
