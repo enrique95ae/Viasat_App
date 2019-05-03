@@ -5,63 +5,101 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
     
     
-    <StackLayout>
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-            
+    <StackLayout BackgroundColor="White">
+        <BoxView BackgroundColor="White"
+                     HeightRequest="30">
+
+        </BoxView>
+
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" BackgroundColor="White" >
             <Label 
                 x:Name="nameLabel"
                 Text=""
+                TextColor="#009FE3"
+                FontSize="35"
+                FontAttributes="Bold"
             />
             
             <Label
                 x:Name="lastLabel"
                 Text=""
+                TextColor="#009FE3"
+                FontSize="35"
+                FontAttributes="Bold"
             />
             
         </StackLayout>
         
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" >
             <Label 
                 Text="Permission Level: "
+                FontSize="Large"
+                FontAttributes="Bold"
+                TextColor="#009FE3"
                 />
             
             <Label
                 x:Name="permissionLabel"
                 Text=""
+                FontSize="Large"
+                TextColor="#009FE3"
             />
+            <BoxView BackgroundColor="White"
+                    HeightRequest="50" >
+
+            </BoxView>
         </StackLayout>
         
-        <Button
-            Text="Favorites"
-            TextColor="White"
-            FontAttributes="Bold"
-            BackgroundColor="#BED733"
-            Clicked="favoritesButton_Clicked"
-            />
+            
+                <Button
+                Text="Favorites"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="30"
+                BackgroundColor="#BED733"
+                Clicked="favoritesButton_Clicked"
+                HeightRequest="110"
+                WidthRequest="370"    
+                CornerRadius="10"
+                />
         
-        <Button
-            Text="Recently Viewed"
-            TextColor="White"
-            FontAttributes="Bold"
-            BackgroundColor="#BED733"
-            Clicked="recentlyViewedButton_Clicked"
-            />
+                <Button
+                Text="Recently Viewed"
+                TextColor="White"
+                FontAttributes="Bold"
+                BackgroundColor="#009FE3"
+                Clicked="recentlyViewedButton_Clicked"
+                HeightRequest="110"
+                WidthRequest="370"
+                FontSize="30"
+                CornerRadius="10"
+                 />
         
-        <Button
-            Text="Personal notes"
-            TextColor="White"
-            FontAttributes="Bold"
-            BackgroundColor="#BED733"
-            Clicked="personalNotesButton_Clicked"
-            />
+                <Button
+                Text="Personal notes"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="30"
+                BackgroundColor="#BED733"
+                Clicked="personalNotesButton_Clicked"
+                HeightRequest="110"
+                WidthRequest="370"
+                CornerRadius="10"
+                 />
         
-        <Button
-            Text="Clear history"
-            TextColor="Red"
-            VerticalOptions="End"
-            Clicked="clearHistoryButton_Clicked"
-            />
+                <BoxView HeightRequest="50"/>
         
-
+                <Button
+                Text="Clear history"
+                FontSize="Medium"
+                TextColor="red"
+                VerticalOptions="End"
+                Clicked="clearHistoryButton_Clicked"
+                HeightRequest="110"
+                WidthRequest="370"
+                CornerRadius="10"
+                />
+        
+       
         </StackLayout>
 </ContentPage>

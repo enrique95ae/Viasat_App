@@ -10,6 +10,7 @@ namespace Viasat_App
         public InfoPage()
         {
             InitializeComponent();
+            //Add info links and help
         }
     }
 }

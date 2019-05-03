@@ -112,6 +112,7 @@ namespace Viasat_App
             //temporary object which will hold all the search parameters
             //this object is to be serizlized into a json string to be sent as a request to the API
             ItemModel tempItem = new ItemModel();
+            //tempItem.permission_level = globals.Globals.TheUser.permission_level;
 
             //Loop to go through all the parameters entered by the user and put them into the object's variables
             foreach(Parameter param in list)

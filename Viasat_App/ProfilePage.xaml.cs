@@ -35,7 +35,8 @@ namespace Viasat_App
 
         public async void recentlyViewedButton_Clicked(object sender, EventArgs e)
         {
-            for(int i=0; i<user.recently_viewed.Count(); i++)
+            globals.Globals.recentlyViewedList.Clear();
+            for (int i=0; i<user.recently_viewed.Count(); i++)
             {
                 string itemId = user.recently_viewed[i];
                 ItemModel tempItem = new ItemModel();
@@ -77,9 +78,6 @@ namespace Viasat_App
                     itemViewed = tempItem2[0];
                     globals.Globals.recentlyViewedList.Add(itemViewed);
                 }
-
-
-               
             }
 
             string title = "Recently viewed";
@@ -124,6 +122,9 @@ namespace Viasat_App
 
         private async void clearHistoryButton_Clicked(object sender, System.EventArgs e)
         {
+            globals.Globals.TheUser.recently_viewed.Clear();
+            globals.Globals.recentlyViewedList.Clear();
+            Console.WriteLine("Hist list contents: " + globals.Globals.recentlyViewedList);
             UserModel tempUser = new UserModel();
             tempUser._id = globals.Globals.TheUser._id;
 
@@ -143,7 +144,7 @@ namespace Viasat_App
 
             }
 
-            globals.Globals.recentlyViewedList.Clear();
+            //globals.Globals.recentlyViewedList.Clear();
         }
 
         private async void personalNotesButton_Clicked(object sender, System.EventArgs e)

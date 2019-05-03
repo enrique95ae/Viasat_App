@@ -15,10 +15,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MyPage.xaml" />
+    <EmbeddedResource Remove="ComponentsPage.xaml" />
+    <EmbeddedResource Remove="InfoPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MyPage.xaml.cs" />
     <Compile Remove="Models\ItemJson.cs" />
+    <Compile Remove="ComponentsPage.xaml.cs" />
+    <Compile Remove="ComponentsPage.xaml.cs" />
+    <Compile Remove="InfoPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 /*
- * Model of a basic item as found in the database.
+ * Model of a basic note as found in the database.
  * Each attribute is preceeded by a jsonProperty that defines how each attribute is called in the json string being sent/received
  */
 

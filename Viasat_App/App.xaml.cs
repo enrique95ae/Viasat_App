@@ -12,9 +12,12 @@ namespace Viasat_App
         public App()
         {
             InitializeComponent();
+
+            //initializing global lists
             globals.Globals.recentlyViewedList = new ObservableCollection<ItemModel>();
             globals.Globals.TheUser = new UserType.UserModel();
 
+            //first page to appear
             MainPage = new NavigationPage(new LoginPage());
         }
 

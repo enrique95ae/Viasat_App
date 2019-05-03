@@ -1,6 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
+/*
+ * Model of a basic user as found in the database.
+ * Each attribute is preceeded by a jsonProperty that defines how each attribute is called in the json string being sent/received
+ * All the fields are populated after a succesfull login.
+ */
 
 namespace UserType
 {
@@ -19,12 +24,12 @@ namespace UserType
         public int permission_level { get; set; }
 
         [JsonProperty("notes")]
-        public ObservableCollection<string> personal_notes {get; set;}
+        public ObservableCollection<string> personal_notes {get; set;} //array of note id's
 
         [JsonProperty("recently_viewed")]
-        public ObservableCollection<string> recently_viewed { get; set; }
+        public ObservableCollection<string> recently_viewed { get; set; } //array of item id's
 
         [JsonProperty("favorites")]
-        public ObservableCollection<string> favorites { get; set; }
+        public ObservableCollection<string> favorites { get; set; } //array of item id's
     }
 }

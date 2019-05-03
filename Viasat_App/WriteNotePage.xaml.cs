@@ -5,6 +5,7 @@ using globals;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
+using Newtonsoft.Json;
 
 using Xamarin.Forms;
 
@@ -17,7 +18,7 @@ namespace Viasat_App
         string belongsTo_itemId;
 
         string requestString;
-        string responseString;
+        //string responseString;
 
         public WriteNotePage(string endpointReceived, string itemId)
         {
@@ -25,7 +26,7 @@ namespace Viasat_App
             endpoint = endpointReceived;
             belongsTo_itemId = itemId;
         }
-
+         
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             newNote.author = Globals.TheUser.name;
@@ -39,10 +40,6 @@ namespace Viasat_App
             else if(endpoint.Contains("/addnoteitem"))
             {
                 newNote.belongs_to = belongsTo_itemId;
-            }
-            else
-            {
-                //who cares about this impossible scenario?
             }
 
             var jsonString = JsonConvert.SerializeObject(newNote,
@@ -58,7 +55,15 @@ namespace Viasat_App
             {
                 var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
 
-                await httpClient.PostAsync(endpoint, httpContent);
+                try
+                {
+                   var response = await httpClient.PostAsync(endpoint, httpContent);
+                   Console.WriteLine(response);
+                }
+                catch(HttpRequestException ex)
+                {
+                    Console.WriteLine("Exception: " + ex.Message);
+                }
             }    
         }
     }

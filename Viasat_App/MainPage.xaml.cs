@@ -39,6 +39,7 @@ namespace Viasat_App
 
         private async void historyButton_Clicked(object sender, System.EventArgs e)
         {
+            globals.Globals.recentlyViewedList.Clear();
             for (int i = 0; i < theUser.recently_viewed.Count; i++)
             {
                 string itemId = theUser.recently_viewed[i];
@@ -71,8 +72,6 @@ namespace Viasat_App
                         responseString = responseContent;
                     }
                 }
-
-
                 ObservableCollection<ItemModel> tempItem2 = JsonConvert.DeserializeObject<ObservableCollection<ItemModel>>(responseString);
                 ItemModel itemViewed = new ItemModel();
 
@@ -81,12 +80,8 @@ namespace Viasat_App
                     itemViewed = tempItem2[0];
                     globals.Globals.recentlyViewedList.Add(itemViewed);
                 }
-
-
-
             }
-
-            string title = "Recently viewed:";
+            string title = "Recently viewed";
             await Navigation.PushAsync(new ResultsPage(globals.Globals.recentlyViewedList, title));
         }
 

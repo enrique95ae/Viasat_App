@@ -21,7 +21,7 @@ namespace Viasat_App
         public ResultsPage(ObservableCollection<ItemModel> itemList, string title)
         {
             InitializeComponent();
-                ResultsListView.ItemsSource = itemList;
+            ResultsListView.ItemsSource = itemList;
             Title = title;
         } 
 
@@ -29,6 +29,8 @@ namespace Viasat_App
 
         private async void itemEntry_Tapped(object sender, ItemTappedEventArgs e)
         {
+
+
             //Creating an object of type ItemModel 
             ItemModel item = (ItemModel)((ListView)sender).SelectedItem;
             ((ListView)sender).SelectedItem = null;
@@ -103,13 +105,11 @@ namespace Viasat_App
                 var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/itemviewed", httpContent);
             }
 
+            globals.Globals.TheUser.recently_viewed.Add(itemReceived.id);
 
-                globals.Globals.recentlyViewedList.Add(itemReceived);
 
             //calling the ItemPage into the stack and passing the selected item by the user
             await Navigation.PushAsync(new ItemPage(itemReceived));
         }
-
-        //END: BUTTONS EVENTS #########################################################
     }
 }

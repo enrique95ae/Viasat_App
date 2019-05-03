@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using ItemType;
 using Newtonsoft.Json;
 using System.Net.Http;
-
 using Xamarin.Forms;
+
+using ItemType;
 
 namespace Viasat_App
 {

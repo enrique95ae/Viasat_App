@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 /*
  *  This model is needed when a user favorites or unfavorites an item.

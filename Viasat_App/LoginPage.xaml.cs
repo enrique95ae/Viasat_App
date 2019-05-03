@@ -14,11 +14,12 @@ namespace Viasat_App
     public partial class LoginPage : ContentPage
     {
         UserModel userRequest = new UserModel();
+
         ObservableCollection<UserModel> userReceived = new ObservableCollection<UserModel>();
+        List<String> demoUsers = new List<string>();
+
         string requestString;
         string responseString;
-
-        List<String> demoUsers = new List<string>();
 
         public LoginPage()
         {
@@ -42,28 +43,27 @@ namespace Viasat_App
             {
                 createRequest(usernameEntry.Text);
 
-                using (var httpClient = new HttpClient())
-                {
-                    var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var httpContent = new StringContent(requestString, Encoding.UTF8, "application/json");
 
-                    var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/returnuser", httpContent);
+                            var httpResponse = await httpClient.PostAsync("http://52.13.18.254:3000/returnuser", httpContent);
 
-                    if(httpResponse.Content != null)
-                    {
-                        var responseContent = await httpResponse.Content.ReadAsStringAsync();
-                        responseString = responseContent;
+                            if(httpResponse.Content != null)
+                            {
+                                var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                                responseString = responseContent;
 
-                        //debugging
-                        Console.WriteLine("JSON: " + requestString);
-                        Console.WriteLine("POST: " + httpContent.ToString());
-                        Console.WriteLine("GET: " + responseContent);
-                    }
-                }
+                                //debugging
+                                Console.WriteLine("JSON: " + requestString);
+                                Console.WriteLine("POST: " + httpContent.ToString());
+                                Console.WriteLine("GET: " + responseContent);
+                            }
+                        }
             }
 
             userReceived = JsonConvert.DeserializeObject<ObservableCollection<UserModel>>(responseString);
 
-            //globals.Globals.TheUser = JsonConvert.DeserializeObject<UserModel>(responseString);
             globals.Globals.TheUser = userReceived[0];
 
 

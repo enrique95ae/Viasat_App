@@ -218,16 +218,6 @@
                         
                 </Grid>
             
-                    <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                        x:Name="infoButton"
-                        Text="Used in"
-                        Clicked="infoButton_Clicked"
-                        BackgroundColor="#BED733"
-                        TextColor="White"
-                        FontSize="Large"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

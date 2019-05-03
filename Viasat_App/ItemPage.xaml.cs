@@ -85,10 +85,6 @@ namespace Viasat_App
             await Navigation.PushAsync(new ResultsPage(itemsList, title));
         }
 
-        private async void infoButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new InfoPage());
-        }
 
         private async void favButton_Clicked(object sender, System.EventArgs e)
         {
